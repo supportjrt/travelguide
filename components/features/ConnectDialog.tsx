@@ -171,7 +171,7 @@ export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
                             type="submit"
                             className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-200 transition-all transform hover:-translate-y-1"
                           >
-                            Confirm Request
+                            Request Callback
                           </button>
                         </motion.div>
                       )}
