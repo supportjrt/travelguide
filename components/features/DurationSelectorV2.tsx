@@ -66,7 +66,7 @@ export default function DurationSelectorV2({ packages, selectedPackage, onSelect
                   </p>
                 </div>
 
-                <div className="mt-3 flex justify-end items-center">
+                <div className="mt-3 flex justify-center items-center">
                   <button className="bg-[#0056D2] text-white text-xs font-bold px-4 py-2 rounded shadow-sm hover:bg-blue-800 transition-colors uppercase whitespace-nowrap">
                     View Details
                   </button>

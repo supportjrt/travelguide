@@ -219,18 +219,12 @@ export default function TourContent({ tour }: TourContentProps) {
                   onEnquire={handleEnquire}
                 />
                 <div className="mt-16">
-          <DealCountdown />
-        </div>
+                  <DealCountdown onClaim={handleEnquire} />
+                </div>
                 {/* <InquiryForm /> */}
              </div>
           </div>
         </div>
-        
-        {/* Deal Countdown - Above Footer */}
-        {/* <div className="mt-16">
-          <DealCountdown />
-        </div> */}
-
       </div>
     </div>
   );
