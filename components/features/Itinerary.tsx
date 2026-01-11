@@ -67,7 +67,7 @@ export default function Itinerary({ items }: ItineraryProps) {
               <div key={index} id={`itinerary-item-${index}`} className="relative pl-12">
                 {/* Day Marker */}
                 <div 
-                  className={`absolute left-0 top-0 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm border-4 border-white shadow-sm transition-colors ${
+                  className={`absolute left-0 top-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg border-4 border-white shadow-sm transition-colors ${
                     isOpen ? "bg-blue-600 text-white" : "bg-blue-100 text-blue-600"
                   }`}
                 >

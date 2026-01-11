@@ -65,46 +65,55 @@ export default function DealCountdown() {
   }, []);
 
   return (
-    <div className="bg-gray-900 text-white rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+    <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white rounded-2xl p-8 relative overflow-hidden shadow-2xl border border-gray-700/50">
       {/* Background Decoration */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-green-500/20 rounded-full blur-3xl -mr-16 -mt-16" />
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-500/20 rounded-full blur-3xl -ml-16 -mb-16" />
+      <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 rounded-full blur-3xl -mr-16 -mt-16 animate-pulse" />
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl -ml-16 -mb-16 animate-pulse" />
 
-      <div className="relative z-10">
+      <div className="relative z-10 flex flex-col items-start">
         <div className="flex items-center gap-3 mb-2">
-          <h3 className="text-2xl md:text-3xl font-bold">Up to INR 24,800 OFF</h3>
+          <h3 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">Up to $300 OFF</h3>
         </div>
-        <div className="flex items-center gap-2 mb-4">
-          <span className="text-xl">on selected trips</span>
+        <div className="flex items-center gap-3 mb-6">
+          <span className="text-xl text-gray-300">on selected trips</span>
           <motion.span 
-            animate={{ scale: [1, 1.05, 1] }}
+            animate={{ 
+              scale: [1, 1.05, 1],
+              boxShadow: ["0 0 0px rgba(255, 215, 0, 0)", "0 0 20px rgba(255, 215, 0, 0.3)", "0 0 0px rgba(255, 215, 0, 0)"]
+            }}
             transition={{ repeat: Infinity, duration: 2 }}
-            className="bg-gradient-to-r from-orange-500 via-white to-green-500 text-gray-900 text-xs font-bold px-2 py-1 rounded uppercase shadow-lg shadow-orange-500/20"
+            className="bg-gradient-to-r from-yellow-600 via-yellow-300 to-yellow-600 text-black text-xs font-bold px-3 py-1.5 rounded uppercase shadow-lg border border-yellow-200/50"
           >
-            Republic Day Sale!
+            Happy New Year Sale!
           </motion.span>
         </div>
-        <p className="text-gray-400 text-sm mb-6">Connect with our destination experts to get exciting discounts</p>
+        
+        <p className="text-gray-400 text-sm mb-8 max-w-md">
+          Start your year with an adventure! Connect with our destination experts to unlock exclusive New Year savings.
+        </p>
+        
         <motion.button 
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="bg-gradient-to-r from-orange-600 to-green-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-orange-500/20 transition-all relative overflow-hidden group"
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          className="w-full md:w-auto bg-gradient-to-r from-orange-600 to-red-600 text-white font-bold py-4 px-8 rounded-xl shadow-lg shadow-orange-900/20 hover:shadow-orange-600/30 transition-all relative overflow-hidden group border border-white/10 mb-8"
         >
-          <span className="relative z-10">Know more about the Deal</span>
+          <span className="relative z-10 flex items-center justify-center gap-2">
+            Claim Your Discount <i className="pi pi-arrow-right text-sm" />
+          </span>
           <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
         </motion.button>
-      </div>
 
-      <div className="relative z-10 flex flex-col items-center md:items-end">
-        <p className="text-sm font-medium mb-3">Hurry - up Sale ends in!</p>
-        <div className="flex gap-3">
-          <TimeBox value={timeLeft.days} label="DAYS" />
-          <span className="text-2xl font-bold mt-2">:</span>
-          <TimeBox value={timeLeft.hours} label="HOURS" />
-          <span className="text-2xl font-bold mt-2">:</span>
-          <TimeBox value={timeLeft.minutes} label="MINUTES" />
-          <span className="text-2xl font-bold mt-2">:</span>
-          <TimeBox value={timeLeft.seconds} label="SECONDS" />
+        <div className="w-full border-t border-gray-700/50 pt-6">
+          <p className="text-xs font-medium mb-4 text-gray-400 uppercase tracking-widest">Offer ends in</p>
+          <div className="flex gap-4 justify-start">
+            <TimeBox value={timeLeft.days} label="DAYS" />
+            <span className="text-2xl font-bold mt-2 text-gray-600">:</span>
+            <TimeBox value={timeLeft.hours} label="HOURS" />
+            <span className="text-2xl font-bold mt-2 text-gray-600">:</span>
+            <TimeBox value={timeLeft.minutes} label="MINUTES" />
+            <span className="text-2xl font-bold mt-2 text-gray-600">:</span>
+            <TimeBox value={timeLeft.seconds} label="SECONDS" />
+          </div>
         </div>
       </div>
     </div>

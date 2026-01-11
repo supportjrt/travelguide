@@ -28,6 +28,7 @@ interface RouteItem {
 
 interface Package {
   id: string;
+  name: string;
   duration: string;
   days: number;
   price: string;
@@ -99,7 +100,8 @@ export default function TourContent({ tour }: TourContentProps) {
       <HeroCarousel 
         key={selectedPackage?.id || "default"} // Force re-render on package change to update images
         images={currentImages} 
-        title={tour.title} 
+        title={tour.title}
+        packageName={selectedPackage?.name}
         location={dynamicLocation} 
         rating={tour.rating} 
       />
@@ -147,22 +149,7 @@ export default function TourContent({ tour }: TourContentProps) {
               <section className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                 <h2 className="text-2xl font-bold font-serif mb-4">Destination Routes</h2>
                 <RouteTimeline route={normalizedRoute} />
-                
-                {/* Stay Category - Moved here */}
-                <div className="mt-4 pt-4 border-t border-gray-100">
-                  <label className="text-lg font-bold text-gray-900 block mb-3">Stay Category</label>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                    <div className="border border-gray-200 bg-white text-gray-600 px-3 py-3 rounded-xl font-medium flex flex-col items-center justify-center cursor-pointer hover:border-orange-500 hover:bg-orange-50 transition-all text-center">
-                      <span className="text-sm">Deluxe</span>
-                    </div>
-                    <div className="border-2 border-orange-500 bg-orange-50 text-orange-700 px-3 py-3 rounded-xl font-medium flex flex-col items-center justify-center cursor-pointer relative text-center">
-                      <span className="text-sm font-bold">Super Deluxe</span>
-                      <div className="absolute -top-2 -right-2 bg-orange-500 text-white rounded-full p-1 shadow-sm">
-                        <i className="pi pi-check text-xs" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
+
               </section>
             )}
 
@@ -173,15 +160,15 @@ export default function TourContent({ tour }: TourContentProps) {
                 {tour.description}
               </p>
               
-              {/* Highlights */}
               {currentHighlights.length > 0 && (
-                 <div className="mb-6">
-                   <h3 className="font-bold text-gray-900 mb-3">Trip Highlights</h3>
-                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                     {currentHighlights.map((highlight, idx) => (
-                       <li key={idx} className="flex items-center gap-2 text-gray-600 text-sm">
-                         <i className="pi pi-check-circle text-green-500" />
-                         {highlight}
+                 <div className="mb-8">
+                   <h3 className="text-xl font-bold text-gray-900 mb-4">Trip Highlights</h3>
+                   <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
+                     {/* Combining dynamic highlights with some static ones for "more items" request */}
+                     {[...currentHighlights, "Professional English Speaking Guide", "All Entry Fees Included", "Comfortable AC Coach"].map((highlight, idx) => (
+                       <li key={idx} className="flex items-start gap-3">
+                         <i className="pi pi-check-circle text-green-500 text-lg mt-0.5" />
+                         <span className="text-gray-700 font-medium">{highlight}</span>
                        </li>
                      ))}
                    </ul>
@@ -189,22 +176,30 @@ export default function TourContent({ tour }: TourContentProps) {
               )}
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-gray-100">
-                 <div className="text-center p-4 bg-gray-50 rounded-xl">
-                   <i className="pi pi-home text-blue-600 text-2xl mb-2" />
-                   <p className="text-xs font-bold text-gray-900">Luxury Stays</p>
-                 </div>
-                 <div className="text-center p-4 bg-gray-50 rounded-xl">
-                   <i className="pi pi-apple text-blue-600 text-2xl mb-2" />
-                   <p className="text-xs font-bold text-gray-900">Gourmet Meals</p>
-                 </div>
-                 <div className="text-center p-4 bg-gray-50 rounded-xl">
-                   <i className="pi pi-car text-blue-600 text-2xl mb-2" />
-                   <p className="text-xs font-bold text-gray-900">Priv. Transport</p>
-                 </div>
-                 <div className="text-center p-4 bg-gray-50 rounded-xl">
-                   <i className="pi pi-users text-blue-600 text-2xl mb-2" />
-                   <p className="text-xs font-bold text-gray-900">Guided Tours</p>
-                 </div>
+                  <div className="text-center p-4 bg-blue-50 hover:bg-blue-600 rounded-xl border border-blue-100 hover:border-blue-600 shadow-sm hover:shadow-md transition-all group duration-300">
+                    <div className="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform overflow-hidden">
+                      <Image src="/images/amenities/hotel.png" alt="Hotel" width={64} height={64} className="object-cover w-full h-full" />
+                    </div>
+                    <p className="text-sm font-bold text-gray-900 group-hover:text-white transition-colors">4 Star Accomodation</p>
+                  </div>
+                  <div className="text-center p-4 bg-orange-50 hover:bg-orange-600 rounded-xl border border-orange-100 hover:border-orange-600 shadow-sm hover:shadow-md transition-all group duration-300">
+                    <div className="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform overflow-hidden">
+                      <Image src="/images/amenities/transport.png" alt="Transport" width={64} height={64} className="object-cover w-full h-full" />
+                    </div>
+                    <p className="text-sm font-bold text-gray-900 group-hover:text-white transition-colors">Luxury Transport</p>
+                  </div>
+                  <div className="text-center p-4 bg-green-50 hover:bg-green-600 rounded-xl border border-green-100 hover:border-green-600 shadow-sm hover:shadow-md transition-all group duration-300">
+                    <div className="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform overflow-hidden">
+                      <Image src="/images/amenities/veg-food.png" alt="Meals" width={64} height={64} className="object-cover w-full h-full" />
+                    </div>
+                    <p className="text-sm font-bold text-gray-900 group-hover:text-white transition-colors">Vegetarian Meals Options</p>
+                  </div>
+                  <div className="text-center p-4 bg-purple-50 hover:bg-purple-600 rounded-xl border border-purple-100 hover:border-purple-600 shadow-sm hover:shadow-md transition-all group duration-300">
+                    <div className="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform overflow-hidden">
+                      <Image src="/images/amenities/guide.png" alt="Guide" width={64} height={64} className="object-cover w-full h-full" />
+                    </div>
+                    <p className="text-sm font-bold text-gray-900 group-hover:text-white transition-colors">Professional Tour Guide</p>
+                  </div>
               </div>
             </section>
 
@@ -233,18 +228,21 @@ export default function TourContent({ tour }: TourContentProps) {
                 <BookingCard 
                   price={currentPrice} 
                   duration={currentDuration || "Duration"} 
+                  packageName={selectedPackage?.name}
                   onEnquire={handleEnquire}
-                  onWhatsApp={handleWhatsApp}
                 />
-                <InquiryForm />
+                <div className="mt-16">
+          <DealCountdown />
+        </div>
+                {/* <InquiryForm /> */}
              </div>
           </div>
         </div>
         
         {/* Deal Countdown - Above Footer */}
-        <div className="mt-16">
+        {/* <div className="mt-16">
           <DealCountdown />
-        </div>
+        </div> */}
 
       </div>
     </div>
