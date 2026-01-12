@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { constructMetadata } from "@/components/seo/Meta";
+import PageHero from "@/components/ui/PageHero";
 
 export const metadata = constructMetadata({
   title: "About Us",
@@ -8,10 +9,15 @@ export const metadata = constructMetadata({
 
 export default function AboutPage() {
   return (
-    <div className="pt-28 pb-16 min-h-screen bg-white">
-      <div className="container mx-auto px-6">
+    <div className="min-h-screen bg-white">
+      <PageHero 
+        title="Our Story" 
+        subtitle="A journey of passion, discovery, and excellence."
+        bgImage="/images/hero_bg.png"
+      />
+
+      <div className="container mx-auto px-6 py-16">
         <div className="max-w-4xl mx-auto text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold font-serif text-gray-900 mb-6">Our Story</h1>
           <p className="text-xl text-gray-600 leading-relaxed">
             Founded in 2010, Jaya Travels was born from a passion for discovery and a commitment to excellence. We believe that travel is not just about seeing new places, but about feeling them.
           </p>

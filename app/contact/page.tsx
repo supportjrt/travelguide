@@ -1,4 +1,5 @@
 import { constructMetadata } from "@/components/seo/Meta";
+import PageHero from "@/components/ui/PageHero";
 
 export const metadata = constructMetadata({
   title: "Contact Us",
@@ -7,12 +8,18 @@ export const metadata = constructMetadata({
 
 export default function ContactPage() {
   return (
-    <div className="pt-28 pb-16 min-h-screen bg-gray-50">
-      <div className="container mx-auto px-6">
+    <div className="min-h-screen bg-gray-50">
+      <PageHero 
+        title="Contact Us" 
+        subtitle="We'd love to hear from you. Let's start planning your dream vacation."
+        bgImage="/images/hero_bg.png"
+      />
+      
+      <div className="container mx-auto px-6 -mt-20 relative z-20 pb-16">
         <div className="max-w-5xl mx-auto bg-white rounded-3xl shadow-xl overflow-hidden">
           <div className="grid grid-cols-1 md:grid-cols-2">
             <div className="p-12 bg-blue-600 text-white">
-              <h1 className="text-4xl font-bold font-serif mb-6">Get in Touch</h1>
+              <h2 className="text-3xl font-bold font-serif mb-6">Get in Touch</h2>
               <p className="text-blue-100 mb-12">
                 Ready to start planning your next adventure? Our team is here to help you craft the perfect itinerary.
               </p>

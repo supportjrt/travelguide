@@ -36,8 +36,12 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <Link href="/" className={`text-2xl font-bold font-serif tracking-tighter ${isScrolledOrInner ? "text-gray-900" : "text-white"}`}>
-          Jaya Travels
+        <Link href="/" className="relative h-12 w-48">
+          <img 
+            src="/images/logo/Jaya-Travel-Tours-Logo-200x64.webp" 
+            alt="Jaya Travels" 
+            className="h-full w-auto object-contain"
+          />
         </Link>
 
         {/* Desktop Nav */}
