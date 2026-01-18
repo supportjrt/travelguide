@@ -32,22 +32,8 @@ export default function Home() {
       <div className="container mx-auto px-6 py-20">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {tours.map((tour) => (
-            <DestinationCard key={tour.id} {...tour} linkPrefix="/tours" />
+            <DestinationCard key={tour.id} {...tour} linkPrefix="" />
           ))}
-        </div>
-      </div>
-
-      {/* Tourism Alliances */}
-      <div className="bg-gray-50 py-20">
-        <div className="container mx-auto px-6 text-center">
-          <h2 className="text-3xl font-bold font-serif mb-12">Our Tourism Alliances</h2>
-          <div className="flex flex-wrap justify-center items-center gap-12 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-             {/* Placeholder logos - replace with actual assets */}
-             <div className="h-16 w-32 bg-gray-200 rounded flex items-center justify-center font-bold text-gray-400">Tourism Board 1</div>
-             <div className="h-16 w-32 bg-gray-200 rounded flex items-center justify-center font-bold text-gray-400">Tourism Board 2</div>
-             <div className="h-16 w-32 bg-gray-200 rounded flex items-center justify-center font-bold text-gray-400">Tourism Board 3</div>
-             <div className="h-16 w-32 bg-gray-200 rounded flex items-center justify-center font-bold text-gray-400">Tourism Board 4</div>
-          </div>
         </div>
       </div>
     </div>

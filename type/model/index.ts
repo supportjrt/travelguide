@@ -60,6 +60,7 @@ export interface DurationSelectorProps {
   packages: Package[];
   selectedPackage: Package | null;
   tourId: string;
+  onPackageChange?: (pkg: Package) => void;
 }
 
 export interface HeroCarouselProps {

@@ -90,13 +90,9 @@ export default function DealCountdown({ onClaim }: DealCountdownProps) {
             transition={{ repeat: Infinity, duration: 2 }}
             className="bg-gradient-to-r from-yellow-600 via-yellow-300 to-yellow-600 text-black text-xs font-bold px-3 py-1.5 rounded uppercase shadow-lg border border-yellow-200/50 whitespace-nowrap"
           >
-            Happy New Year Sale!
+            GOLDEN JUBILEE SALE!
           </motion.span>
         </div>
-        
-        <p className="text-gray-400 text-sm mb-8 max-w-md">
-          Start your year with an adventure! Connect with our destination experts to unlock exclusive New Year savings.
-        </p>
         
         <motion.button 
           whileHover={{ scale: 1.02 }}

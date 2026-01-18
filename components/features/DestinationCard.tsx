@@ -11,7 +11,7 @@ const DestinationCard = ({
   rating = 4.8,
   linkPrefix = "/destinations"
 }: DestinationCardProps) => {
-  const isClickable = linkPrefix && linkPrefix !== "#";
+  const isClickable = linkPrefix !== "#";
   const Wrapper = isClickable ? Link : "div";
   const wrapperProps = isClickable ? { href: `${linkPrefix}/${id}` } : {};
 

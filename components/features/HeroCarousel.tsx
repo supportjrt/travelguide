@@ -24,7 +24,7 @@ export default function HeroCarousel({ images, title, packageName, location, rat
   };
 
   return (
-    <div className="relative h-[60vh] w-full overflow-hidden group">
+    <div className="relative h-[40vh] w-full overflow-hidden group">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}

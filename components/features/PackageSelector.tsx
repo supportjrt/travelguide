@@ -1,8 +1,9 @@
-import Link from "next/link";
+"use client";
+
 import Image from "next/image";
 import { DurationSelectorProps } from "../../type/model";
 
-export default function PackageSelector({ packages, selectedPackage, tourId }: DurationSelectorProps) {
+export default function PackageSelector({ packages, selectedPackage, tourId, onPackageChange }: DurationSelectorProps) {
   if (!packages || packages.length === 0) return null;
 
   return (
@@ -16,10 +17,10 @@ export default function PackageSelector({ packages, selectedPackage, tourId }: D
              : "";
 
            return (
-            <Link 
+            <button 
               key={pkg.id}
-              href={`/tours/${tourId}/${pkg.id}`}
-              className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group border flex flex-col h-full ${
+              onClick={() => onPackageChange?.(pkg)}
+              className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group border flex flex-col h-full text-left ${
                 selectedPackage?.id === pkg.id ? 'border-blue-600 ring-2 ring-blue-600 ring-offset-2' : 'border-gray-100'
               }`}
             >
@@ -65,7 +66,7 @@ export default function PackageSelector({ packages, selectedPackage, tourId }: D
                   </span>
                 </div>
               </div>
-            </Link>
+            </button>
           );
         })}
       </div>

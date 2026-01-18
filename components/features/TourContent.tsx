@@ -10,6 +10,7 @@ import ItineraryTabs from "./ItineraryTabs";
 import BookingCard from "./BookingCard";
 import ConnectDialog from "./ConnectDialog";
 import PackageSelector from "./PackageSelector";
+import Partners from "./Partners";
 
 interface ItineraryItem {
   day?: number;
@@ -92,12 +93,8 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
     setIsConnectOpen(true);
   };
 
-  const handleWhatsApp = () => {
-    window.open("https://wa.me/919876543210", "_blank");
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50 pb-16">
+    <div className="min-h-screen bg-gray-50 pb-32 lg:pb-16">
       <ScrollTop />
       <ConnectDialog isOpen={isConnectOpen} onClose={() => setIsConnectOpen(false)} />
       
@@ -123,6 +120,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
                   packages={tour.packages!} 
                   selectedPackage={selectedPackage} 
                   tourId={tour.id}
+                  onPackageChange={setSelectedPackage}
                 />
             )}
 
@@ -207,18 +205,39 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
           <div className="space-y-8">
              {/* Booking Card - Moved to top of sidebar */}
              <div className="sticky top-24 z-20">
-                <BookingCard 
-                  price={currentPrice} 
-                  duration={currentDuration || "Duration"} 
-                  packageName={selectedPackage?.name}
-                  onEnquire={handleEnquire}
-                />
-                <div className="mt-16">
+                <div className="hidden lg:block">
+                  <BookingCard 
+                    price={currentPrice} 
+                    duration={currentDuration || "Duration"} 
+                    packageName={selectedPackage?.name}
+                    onEnquire={handleEnquire}
+                  />
+                </div>
+                <div className="mt-8 lg:mt-16">
                   <DealCountdown onClaim={handleEnquire} />
                 </div>
                 {/* <InquiryForm /> */}
              </div>
           </div>
+        </div>
+      </div>
+
+      {/* Partners Section */}
+      <Partners />
+
+      {/* Mobile Sticky Bottom Bar */}
+      <div className="fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 p-4 z-50 lg:hidden shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)]">
+        <div className="flex items-center justify-between gap-4">
+          <div>
+             <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">Starting from</p>
+             <p className="text-xl font-bold text-blue-600">{currentPrice}</p>
+          </div>
+          <button 
+            onClick={handleEnquire}
+            className="bg-blue-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-blue-700 transition-colors flex-1 max-w-[200px]"
+          >
+            Enquire Now
+          </button>
         </div>
       </div>
     </div>
