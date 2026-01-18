@@ -9,7 +9,7 @@ import RouteTimeline from "./RouteTimeline";
 import ItineraryTabs from "./ItineraryTabs";
 import BookingCard from "./BookingCard";
 import ConnectDialog from "./ConnectDialog";
-import DurationSelectorV2 from "./DurationSelectorV2";
+import PackageSelector from "./PackageSelector";
 
 interface ItineraryItem {
   day?: number;
@@ -119,7 +119,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
             
             {/* Duration Selector */}
             {hasPackages && (
-                <DurationSelectorV2 
+                <PackageSelector 
                   packages={tour.packages!} 
                   selectedPackage={selectedPackage} 
                   tourId={tour.id}

@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { DurationSelectorProps } from "../../type/model";
 
-export default function DurationSelectorV2({ packages, selectedPackage, tourId }: DurationSelectorProps) {
+export default function PackageSelector({ packages, selectedPackage, tourId }: DurationSelectorProps) {
   if (!packages || packages.length === 0) return null;
 
   return (
