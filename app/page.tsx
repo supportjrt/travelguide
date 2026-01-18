@@ -25,14 +25,14 @@ export default function Home() {
               <h2 className="text-4xl font-bold font-serif text-gray-900 mb-4">Trending Destinations</h2>
               <p className="text-gray-600 max-w-xl">Curated escapes for the refined traveler. Explore our most sought-after locations this season.</p>
             </div>
-            <a href="/destinations" className="text-blue-600 font-medium hover:text-blue-700 flex items-center gap-2 transition-colors">
+            {/* <a href="/destinations" className="text-blue-600 font-medium hover:text-blue-700 flex items-center gap-2 transition-colors">
               View All Destinations <i className="pi pi-arrow-right text-xs" />
-            </a>
+            </a> */}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {featuredDestinations.map((dest) => (
-              <DestinationCard key={dest.id} {...dest} />
+              <DestinationCard key={dest.id} {...dest} linkPrefix="#" />
             ))}
           </div>
         </div>

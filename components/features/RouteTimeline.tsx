@@ -1,15 +1,7 @@
 "use client";
 
+import { RouteTimelineProps } from "@/type/model";
 import { motion } from "framer-motion";
-
-interface RouteItem {
-  city: string;
-  days: number;
-}
-
-interface RouteTimelineProps {
-  route: RouteItem[];
-}
 
 export default function RouteTimeline({ route }: RouteTimelineProps) {
   return (

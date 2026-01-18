@@ -1,39 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-
-interface ItineraryItem {
-  day?: number;
-  title: string;
-  activity: string;
-  description: string;
-  image?: string;
-  stay?: string;
-  transfer?: string;
-}
-
-interface RouteItem {
-  city: string;
-  days: number;
-}
-
-export interface Package {
-  id: string;
-  name: string;
-  duration: string;
-  days: number;
-  price: string;
-  image: string;
-  images?: string[];
-  route: RouteItem[] | string[];
-  highlights: string[];
-  itinerary: ItineraryItem[];
-}
-
-interface DurationSelectorProps {
-  packages: Package[];
-  selectedPackage: Package | null;
-  tourId: string;
-}
+import { DurationSelectorProps } from "../../type/model";
 
 export default function DurationSelector({ packages, selectedPackage, tourId }: DurationSelectorProps) {
   if (!packages || packages.length === 0) return null;

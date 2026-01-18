@@ -1,18 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-
-interface DestinationCardProps {
-  id: string;
-  title: string;
-  location: string;
-  price: string;
-  image: string;
-  rating?: number;
-  category?: string;
-  tag?: string;
-  linkPrefix?: string;
-}
+import { DestinationCardProps } from "../../type/model";
 
 const DestinationCard = ({ 
   id, 
@@ -23,8 +11,13 @@ const DestinationCard = ({
   rating = 4.8,
   linkPrefix = "/destinations"
 }: DestinationCardProps) => {
+  const isClickable = linkPrefix && linkPrefix !== "#";
+  const Wrapper = isClickable ? Link : "div";
+  const wrapperProps = isClickable ? { href: `${linkPrefix}/${id}` } : {};
+
   return (
-    <Link href={`${linkPrefix}/${id}`} className="group block h-full">
+    // @ts-ignore - Dynamic component props
+    <Wrapper {...wrapperProps} className="group block h-full">
       <div className="relative h-[400px] w-full overflow-hidden rounded-2xl shadow-lg">
         <Image
           src={image}
@@ -51,13 +44,15 @@ const DestinationCard = ({
               <span className="text-xs text-gray-300 block">Starting from</span>
               <span className="font-semibold text-lg">{price}</span>
             </div>
-            <span className="bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-50 transition-colors">
-              Explore
-            </span>
+            {isClickable && (
+              <span className="bg-white text-black px-4 py-2 rounded-full text-sm font-medium hover:bg-blue-50 transition-colors">
+                Explore
+              </span>
+            )}
           </div>
         </div>
       </div>
-    </Link>
+    </Wrapper>
   );
 };
 

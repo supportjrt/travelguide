@@ -8,9 +8,7 @@ import DealCountdown from "./DealCountdown";
 import RouteTimeline from "./RouteTimeline";
 import ItineraryTabs from "./ItineraryTabs";
 import BookingCard from "./BookingCard";
-import InquiryForm from "./InquiryForm";
 import ConnectDialog from "./ConnectDialog";
-import DurationSelector from "./DurationSelector";
 import DurationSelectorV2 from "./DurationSelectorV2";
 
 interface ItineraryItem {
@@ -121,19 +119,11 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
             
             {/* Duration Selector */}
             {hasPackages && (
-              tour.id === 'europe-tour-v2' ? (
                 <DurationSelectorV2 
                   packages={tour.packages!} 
                   selectedPackage={selectedPackage} 
                   tourId={tour.id}
                 />
-              ) : (
-                <DurationSelector 
-                  packages={tour.packages!} 
-                  selectedPackage={selectedPackage} 
-                  tourId={tour.id}
-                />
-              )
             )}
 
             {/* Route Timeline */}

@@ -2,20 +2,7 @@
 
 import { useState } from "react";
 import Itinerary from "./Itinerary";
-
-interface ItineraryItem {
-  day?: number;
-  title: string;
-  activity: string;
-  description: string;
-  image?: string;
-  stay?: string;
-  transfer?: string;
-}
-
-interface ItineraryTabsProps {
-  items: ItineraryItem[];
-}
+import { ItineraryTabsProps } from "@/type/model";
 
 export default function ItineraryTabs({ items }: ItineraryTabsProps) {
   const [activeTab, setActiveTab] = useState("Itinerary");

@@ -20,10 +20,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: "Home", href: "/" },
-    { name: "Destinations", href: "/destinations" },
     { name: "Tours", href: "/tours" },
-    { name: "About", href: "/about" },
-    { name: "Contact", href: "/contact" },
   ];
 
   const isHome = pathname === "/";
@@ -32,14 +29,16 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolledOrInner ? "bg-white/90 backdrop-blur-md shadow-sm py-4 text-gray-900" : "bg-transparent py-6 text-white"
+        isScrolledOrInner
+          ? "bg-white/90 backdrop-blur-md shadow-sm py-4 text-gray-900"
+          : "bg-transparent py-6 text-white"
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
         <Link href="/" className="relative h-12 w-48">
-          <img 
-            src="/images/logo/Jaya-Travel-Tours-Logo-200x64.webp" 
-            alt="Jaya Travels" 
+          <img
+            src="/images/logo/Jaya-Travel-Tours-Logo-200x64.webp"
+            alt="Jaya Travels"
             className="h-full w-auto object-contain"
           />
         </Link>

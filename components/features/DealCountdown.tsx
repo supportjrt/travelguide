@@ -3,9 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
-interface DealCountdownProps {
-  onClaim?: () => void;
-}
+
 
 export default function DealCountdown({ onClaim }: DealCountdownProps) {
   const [timeLeft, setTimeLeft] = useState({

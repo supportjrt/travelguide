@@ -3,14 +3,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-
-interface HeroCarouselProps {
-  images: string[];
-  title: string;
-  packageName?: string;
-  location: string;
-  rating: number;
-}
+import { HeroCarouselProps } from "@/type/model";
 
 export default function HeroCarousel({ images, title, packageName, location, rating }: HeroCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);

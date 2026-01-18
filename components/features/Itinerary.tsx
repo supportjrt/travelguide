@@ -3,18 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-
-interface ItineraryItem {
-  day?: number;
-  title: string;
-  activity: string;
-  description: string;
-  image?: string;
-}
-
-interface ItineraryProps {
-  items: ItineraryItem[];
-}
+import { ItineraryProps } from "@/type/model";
 
 export default function Itinerary({ items }: ItineraryProps) {
   const [isExpanded, setIsExpanded] = useState(false);

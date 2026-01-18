@@ -1,14 +1,5 @@
 "use client";
 
-interface BookingCardProps {
-  price: string;
-  duration: string;
-  packageName?: string;
-  availableDates?: string;
-  groupSize?: string;
-  onEnquire?: () => void;
-}
-
 export default function BookingCard({ 
   price, 
   duration, 
