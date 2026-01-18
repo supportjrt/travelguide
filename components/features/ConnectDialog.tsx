@@ -17,8 +17,20 @@ export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
   const [timezone, setTimezone] = useState("EST");
   const [error, setError] = useState("");
 
+  const formatPhoneNumber = (value: string) => {
+    const phoneNumber = value.replace(/\D/g, "");
+    const phoneNumberLength = phoneNumber.length;
+
+    if (phoneNumberLength < 4) return phoneNumber;
+    if (phoneNumberLength < 7) {
+      return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3)}`;
+    }
+    return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
+  };
+
   const handleNextStep = () => {
-    if (/^\d{10}$/.test(phone)) {
+    const rawPhone = phone.replace(/\D/g, "");
+    if (/^\d{10}$/.test(rawPhone)) {
       setError("");
       setStep(2);
     } else {
@@ -107,11 +119,11 @@ export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
                         </div>
                         <input 
                           type="tel" 
-                          placeholder="Your Phone*" 
+                          placeholder="(555) 555-5555" 
                           value={phone}
                           onChange={(e) => {
-                            const val = e.target.value.replace(/\D/g, '').slice(0, 10);
-                            setPhone(val);
+                            const formatted = formatPhoneNumber(e.target.value);
+                            setPhone(formatted);
                             if (error) setError("");
                           }}
                           required={step === 1}

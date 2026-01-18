@@ -3,6 +3,7 @@ import { tours } from "@/data/tours";
 import { notFound } from "next/navigation";
 import TourContent from "@/components/features/TourContent";
 
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const tour = tours.find((t) => t.id === slug);
@@ -23,5 +24,7 @@ export default async function TourDetail({ params }: { params: Promise<{ slug: s
     notFound();
   }
 
-  return <TourContent tour={tour} />;
+  return (
+      <TourContent tour={tour} />
+  );
 }

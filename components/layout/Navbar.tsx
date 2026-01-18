@@ -32,13 +32,11 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <Link href="/" className="relative h-12 w-48">
           <img
             src="/images/logo/Jaya-Travel-Tours-Logo-200x64.webp"
             alt="Jaya Travels"
             className="h-full w-auto object-contain"
           />
-        </Link>
 
         {/* Desktop Nav */}
         {/* <div className="hidden md:flex items-center gap-8">
