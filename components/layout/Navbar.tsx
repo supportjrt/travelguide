@@ -18,10 +18,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "Tours", href: "/tours" },
-  ];
+
 
   const isHome = pathname === "/";
   const isScrolledOrInner = scrolled || !isHome;
@@ -29,7 +26,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        isScrolledOrInner
+        scrolled
           ? "bg-white/90 backdrop-blur-md shadow-sm py-4 text-gray-900"
           : "bg-transparent py-6 text-white"
       }`}
@@ -44,7 +41,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        {/* <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -56,7 +53,7 @@ const Navbar = () => {
               {link.name}
             </Link>
           ))}
-        </div>
+        </div> */}
 
         {/* Mobile Toggle */}
         <button
@@ -76,7 +73,7 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-white border-t text-gray-900 absolute w-full left-0 top-full"
           >
-            <div className="flex flex-col p-6 gap-4">
+            {/* <div className="flex flex-col p-6 gap-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -87,7 +84,7 @@ const Navbar = () => {
                   {link.name}
                 </Link>
               ))}
-            </div>
+            </div> */}
           </motion.div>
         )}
       </AnimatePresence>

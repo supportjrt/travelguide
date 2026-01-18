@@ -4,6 +4,11 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 
+interface ConnectDialogProps {
+  isOpen: boolean;
+  onClose: () => void;
+}
+
 export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
   const [step, setStep] = useState(1);
   const [phone, setPhone] = useState("");
