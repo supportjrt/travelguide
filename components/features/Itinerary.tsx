@@ -7,7 +7,7 @@ import { ItineraryProps } from "@/type/model";
 
 export default function Itinerary({ items }: ItineraryProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [openItems, setOpenItems] = useState<number[]>([0]); // Open first item by default
+  const [openItems, setOpenItems] = useState<number[]>([0]); 
 
   const visibleItems = isExpanded ? items : items.slice(0, 3);
 
