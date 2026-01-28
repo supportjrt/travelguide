@@ -47,13 +47,13 @@ export default function Itinerary({ items }: ItineraryProps) {
           )}
         </button>
       </div>
-      <div className="relative before:absolute before:left-4 before:top-4 before:bottom-4 before:w-[2px] before:bg-gray-100">
+      <div className="relative space-y-8 before:absolute before:left-4 before:top-4 before:bottom-4 before:w-[2px] before:bg-gray-100">
       {items && items.length > 0 ? (
         <>
           {visibleItems.map((item, index) => {
             const isOpen = openItems.includes(index);
             return (
-              <div key={index} id={`itinerary-item-${index}`} className="relative pl-12">
+              <div key={index} id={`itinerary-item-${index}`} className="relative pl-12 pb-2">
                 {/* Day Marker */}
                 <div 
                   className={`absolute left-0 top-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg border-4 border-white shadow-sm transition-colors ${
@@ -87,7 +87,10 @@ export default function Itinerary({ items }: ItineraryProps) {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-gray-600 text-sm mb-4">{item.description}</p>
+                      <div 
+                        className="text-gray-600 text-sm mb-4 prose prose-blue prose-sm max-w-none"
+                        dangerouslySetInnerHTML={{ __html: item.description }}
+                      />
                       {item.image && (
                         <div className="relative h-48 rounded-xl overflow-hidden mb-4">
                           <Image src={item.image} alt={item.title} fill className="object-cover" />

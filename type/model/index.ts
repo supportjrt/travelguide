@@ -34,14 +34,34 @@ export interface ItineraryItem {
   activity: string;
   description: string;
   image?: string;
-  stay?: string;
-  transfer?: string;
 }
 
-export interface RouteItem {
+export interface SightseeingItem {
+  country?: string;
   city: string;
-  days: number;
+  activities: string[];
+  day?: number;
+  image?: string;
 }
+
+export interface AccommodationItem {
+  day?: number;
+  title: string;
+  hotel: string;
+  image?: string;
+}
+
+export interface MealInfo {
+  inclusions: string[];
+  note?: string;
+  driverTips?: string;
+}
+
+export interface ExclusionItem {
+  description: string;
+}
+
+// ...
 
 export interface Package {
   id: string;
@@ -54,13 +74,30 @@ export interface Package {
   route: RouteItem[] | string[];
   highlights: string[];
   itinerary: ItineraryItem[];
+  sightseeing?: SightseeingItem[];
+  accommodation?: AccommodationItem[];
+  meals?: MealInfo;
+  exclusions?: ExclusionItem[];
+  instructions?: InstructionItem[];
+  detailedHighlights?: string[];
+  additionalDelights?: string[];
 }
 
-export interface DurationSelectorProps {
-  packages: Package[];
-  selectedPackage: Package | null;
-  tourId: string;
-  onPackageChange?: (pkg: Package) => void;
+// ...
+
+export interface ItineraryTabsProps {
+  itinerary: ItineraryItem[];
+  sightseeing?: SightseeingItem[];
+  accommodation?: AccommodationItem[];
+  meals?: MealInfo;
+  exclusions?: ExclusionItem[];
+  instructions?: InstructionItem[];
+  highlights?: string[];
+  additionalDelights?: string[];
+}
+
+export interface RouteTimelineProps {
+  route: RouteItem[];
 }
 
 export interface HeroCarouselProps {
@@ -68,17 +105,33 @@ export interface HeroCarouselProps {
   title: string;
   packageName?: string;
   location: string;
+  rating?: number;
+}
+
+export interface RouteItem {
+  city: string;
+  days: number;
+}
+
+export interface InstructionItem {
+  description: string;
+}
+
+export interface Tour {
+  id: string;
+  title: string;
+  location: string;
+  price: string;
+  image: string;
   rating: number;
+  category?: string;
+  tag?: string;
+  duration: string;
+  description: string;
+  packages?: Package[];
+  itinerary?: ItineraryItem[];
 }
 
 export interface ItineraryProps {
   items: ItineraryItem[];
-}
-
-export interface ItineraryTabsProps {
-  items: ItineraryItem[];
-}
-
-export interface RouteTimelineProps {
-  route: RouteItem[];
 }

@@ -7,63 +7,77 @@ export default function PackageSelector({ packages, selectedPackage, tourId, onP
   if (!packages || packages.length === 0) return null;
 
   return (
-    <div>
-      <h2 className="text-2xl font-bold font-serif text-gray-900 mb-6">Choose Trip Duration</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+      <div className="flex justify-between items-center mb-6">
+        <h2 className="text-xl font-bold font-serif text-gray-900">Choose Your Journey</h2>
+        <button className="text-blue-600 text-sm font-medium flex items-center gap-1 hover:text-blue-700">
+           <i className="pi pi-filter" /> Filter
+        </button>
+      </div>
+      
+      <div className="flex flex-col space-y-4">
         {packages.map((pkg) => {
-           // Derive subtitle from route if available, e.g., "Paris 3N, Zurich 2N"
-           const subtitle = Array.isArray(pkg.route) 
-             ? pkg.route.map((r: any) => `${r.city} ${r.days}N`).join(", ")
-             : "";
-
+           const isSelected = selectedPackage?.id === pkg.id;
+           
            return (
             <button 
               key={pkg.id}
               onClick={() => onPackageChange?.(pkg)}
-              className={`bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer group border flex flex-col h-full text-left ${
-                selectedPackage?.id === pkg.id ? 'border-blue-600 ring-2 ring-blue-600 ring-offset-2' : 'border-gray-100'
+              className={`relative w-full text-left rounded-xl overflow-hidden transition-all duration-300 group border ${
+                isSelected 
+                  ? 'bg-white border-blue-600 ring-1 ring-blue-600 shadow-md' 
+                  : 'bg-white border-gray-100 hover:border-gray-300 hover:shadow-md'
               }`}
             >
-              {/* Image Section with Info Bar */}
-              <div className="relative h-48 w-full shrink-0">
-                <Image 
-                  src={pkg.image} 
-                  alt={pkg.name} 
-                  fill 
-                  className="object-cover transition-transform duration-500 group-hover:scale-110" 
-                />
-                
-                {/* Dark Info Bar Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gray-900/80 backdrop-blur-sm text-white py-2 px-3 flex justify-between items-center">
-                  <span className="text-sm font-medium">{pkg.duration}</span>
-                  <span className="text-sm font-bold">{pkg.price}* pp</span>
-                </div>
-
-                {/* Selected Checkmark Overlay */}
-                {selectedPackage?.id === pkg.id && (
-                  <div className="absolute inset-0 bg-blue-600/10 z-10">
-                    <div className="absolute top-3 right-3 bg-blue-600 text-white rounded-full p-2 shadow-lg scale-110">
-                      <i className="pi pi-check text-lg font-bold" />
+              <div className="flex p-3 gap-4">
+                {/* Image Section */}
+                <div className="relative w-24 h-24 shrink-0 rounded-lg overflow-hidden">
+                  <Image 
+                    src={pkg.image} 
+                    alt={pkg.name} 
+                    fill 
+                    className="object-cover transition-transform duration-500 group-hover:scale-110" 
+                  />
+                  {isSelected && (
+                    <div className="absolute inset-0 bg-blue-600/10 flex items-center justify-center">
+                        <div className="bg-blue-600 text-white rounded-full p-1 shadow-sm">
+                            <i className="pi pi-check text-xs font-bold" />
+                        </div>
                     </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Content Section */}
-              <div className="p-4 flex flex-col flex-grow justify-between">
-                <div>
-                  <h3 className="font-bold text-gray-900 line-clamp-2 mb-1 leading-tight">
-                    {pkg.name}
-                  </h3>
-                  <p className="text-xs text-gray-500 line-clamp-2">
-                    {subtitle}
-                  </p>
+                  )}
                 </div>
 
-                <div className="mt-3 flex justify-center items-center">
-                  <span className="bg-[#0056D2] text-white text-xs font-bold px-4 py-2 rounded shadow-sm hover:bg-blue-800 transition-colors uppercase whitespace-nowrap">
-                    View Details
-                  </span>
+                {/* Content Section */}
+                <div className="flex flex-col flex-grow justify-between py-1">
+                  <div>
+                    <div className="flex justify-between items-start mb-1">
+                        <span className="text-[10px] font-bold tracking-wider text-blue-600 uppercase bg-blue-50 px-2 py-0.5 rounded-full">
+                            {pkg.days} Days
+                        </span>
+                        {isSelected && <span className="text-blue-600 text-xs font-bold"><i className="pi pi-check-circle"/></span>}
+                    </div>
+                    
+                    <h3 className={`font-bold text-gray-900 leading-tight mb-1 ${isSelected ? 'bg-gradient-to-r from-blue-800 via-blue-600 to-purple-600 bg-clip-text text-transparent' : ''}`}>
+                      {pkg.name}
+                    </h3>
+                  </div>
+
+                  <div className="flex justify-between items-end mt-2">
+                    <div>
+                        <p className="text-[10px] text-gray-500 uppercase font-medium">Starting From</p>
+                        <p className="text-lg font-bold text-gray-900">{pkg.price}<span className="text-xs text-gray-400 font-normal ml-1">*pp</span></p>
+                    </div>
+                    
+                    {isSelected ? (
+                        <span className="bg-blue-50 text-blue-700 text-xs font-bold px-3 py-1.5 rounded-lg border border-blue-100">
+                            Selected
+                        </span>
+                    ) : (
+                        <span className="text-gray-400 group-hover:text-blue-600 text-xs font-medium border border-gray-200 group-hover:border-blue-200 px-3 py-1.5 rounded-lg transition-colors">
+                            View Details
+                        </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </button>

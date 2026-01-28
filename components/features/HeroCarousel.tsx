@@ -54,12 +54,16 @@ export default function HeroCarousel({ images, title, packageName, location, rat
           transition={{ delay: 0.2 }}
         >
           <span className="uppercase tracking-widest text-sm font-medium mb-4 block">Destinations / {location}</span>
-          {packageName && (
-            <div className="mb-2 inline-block bg-white/20 backdrop-blur-md px-4 py-1 rounded-full border border-white/30">
-              <span className="text-sm font-bold tracking-wide text-white">{packageName}</span>
-            </div>
+          
+          {packageName ? (
+            <>
+               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-6 leading-tight drop-shadow-lg bg-gradient-to-r from-white via-blue-100 to-blue-200 bg-clip-text text-transparent">
+                  {packageName}
+               </h1>
+            </>
+          ) : (
+             <h1 className="text-5xl md:text-7xl font-bold font-serif mb-4">{title}</h1>
           )}
-          <h1 className="text-5xl md:text-7xl font-bold font-serif mb-4">{title}</h1>
           <div className="flex items-center justify-center gap-2 text-yellow-400 text-xl">
              <i className="pi pi-star-fill" />
              <span className="text-white font-medium">{rating} (223 Reviews)</span>

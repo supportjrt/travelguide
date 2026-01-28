@@ -3,55 +3,18 @@
 import { useState } from "react";
 import Image from "next/image";
 import { ScrollTop } from 'primereact/scrolltop';
+import { Tooltip } from 'primereact/tooltip';
 import HeroCarousel from "./HeroCarousel";
-import DealCountdown from "./DealCountdown";
+// import DealCountdown from "./DealCountdown"; // Removed as per request
 import RouteTimeline from "./RouteTimeline";
 import ItineraryTabs from "./ItineraryTabs";
-import BookingCard from "./BookingCard";
+// import BookingCard from "./BookingCard"; // Replaced by TourHeader
 import ConnectDialog from "./ConnectDialog";
 import PackageSelector from "./PackageSelector";
 import Partners from "./Partners";
+import TourHeader from "./TourHeader";
 
-interface ItineraryItem {
-  day?: number;
-  title: string;
-  activity: string;
-  description: string;
-  image?: string;
-  stay?: string;
-  transfer?: string;
-}
-
-interface RouteItem {
-  city: string;
-  days: number;
-}
-
-interface Package {
-  id: string;
-  name: string;
-  duration: string;
-  days: number;
-  price: string;
-  image: string;
-  images?: string[];
-  route: RouteItem[] | string[]; // Support both for backward compatibility
-  highlights: string[];
-  itinerary: ItineraryItem[];
-}
-
-interface Tour {
-  id: string;
-  title: string;
-  location: string;
-  price: string;
-  image: string;
-  rating: number;
-  description: string;
-  packages?: Package[];
-  itinerary?: ItineraryItem[];
-  duration?: string;
-}
+import { Tour, Package, RouteItem, ItineraryItem } from "@/type/model";
 
 interface TourContentProps {
   tour: Tour;
@@ -68,6 +31,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
   
   const [selectedPackage, setSelectedPackage] = useState<Package | null>(initialPackage);
   const [isConnectOpen, setIsConnectOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   // Derived data
   const currentImages = selectedPackage?.images || [tour.image];
@@ -76,6 +40,28 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
   const currentItinerary = selectedPackage ? selectedPackage.itinerary : tour.itinerary;
   const currentRoute = selectedPackage ? selectedPackage.route : [];
   const currentHighlights = selectedPackage ? selectedPackage.highlights : [];
+  const currentDetailedHighlights = selectedPackage?.detailedHighlights || [];
+  const currentAdditionalDelights = selectedPackage?.additionalDelights || [];
+  
+  const currentSightseeing = selectedPackage?.sightseeing || [];
+  const currentAccommodation = selectedPackage?.accommodation || [];
+  const currentMeals = selectedPackage?.meals;
+  const currentExclusions = selectedPackage?.exclusions || [];
+  const currentInstructions = selectedPackage?.instructions || [];
+
+  // ...
+
+                 <ItineraryTabs 
+                   key={selectedPackage?.id || "default"} 
+                   itinerary={currentItinerary || []}
+                   sightseeing={currentSightseeing}
+                   accommodation={currentAccommodation}
+                   meals={currentMeals}
+                   exclusions={currentExclusions}
+                   instructions={currentInstructions}
+                   highlights={currentDetailedHighlights}
+                   additionalDelights={currentAdditionalDelights}
+                 />
 
   // Helper to normalize route data
   const normalizedRoute: RouteItem[] = Array.isArray(currentRoute) 
@@ -108,33 +94,97 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
         rating={tour.rating} 
       />
 
-      <div className="container mx-auto px-6 py-12">
+      <div className="container mx-auto px-4 lg:px-8 py-8">
         
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Main Content */}
-          <div className="lg:col-span-2 space-y-12">
+        <div className="flex flex-col lg:flex-row gap-8 items-start">
+          
+          {/* Left Column - Sticky Sidebar with Smooth Transition */}
+          <div 
+            className={`
+                lg:sticky lg:top-24 order-2 lg:order-1 transition-all duration-500 ease-in-out overflow-hidden
+                ${isSidebarOpen ? 'lg:w-[380px] opacity-100' : 'lg:w-0 opacity-0'}
+            `}
+          >
+             <div className="space-y-8 w-full">
+                {/* Package Selector */}
+                {hasPackages && (
+                    <div className="min-w-[380px] lg:min-w-0"> {/* Prevent content squashing during transition */}
+                        <PackageSelector 
+                          packages={tour.packages!} 
+                          selectedPackage={selectedPackage} 
+                          tourId={tour.id}
+                          onPackageChange={setSelectedPackage}
+                        />
+                    </div>
+                )}
+             </div>
+          </div>
+
+          {/* Right Column - Main Content */}
+          <div className="flex-1 order-1 lg:order-2 space-y-8 min-w-0 relative"> {/* min-w-0 prevents flex child from overflowing */}
             
-            {/* Duration Selector */}
-            {hasPackages && (
-                <PackageSelector 
-                  packages={tour.packages!} 
-                  selectedPackage={selectedPackage} 
-                  tourId={tour.id}
-                  onPackageChange={setSelectedPackage}
-                />
+            {/* Sticky Toggle Button */}
+            {!isConnectOpen && (
+                <div className="sticky top-28 z-[100] flex justify-end pointer-events-none -mb-12 pr-2">
+                    <Tooltip target=".toggle-btn" position="left" />
+                    <button 
+                        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                        className="toggle-btn pointer-events-auto bg-white text-blue-600 hover:bg-blue-50 hover:text-blue-700 transition-all p-2.5 rounded-full shadow-lg border border-gray-100 backdrop-blur-sm transform hover:scale-105"
+                        data-pr-tooltip={isSidebarOpen ? "Hide Packages" : "Show Packages"}
+                    >
+                        <i className={`pi ${isSidebarOpen ? 'pi-angle-double-left' : 'pi-angle-double-right'} text-lg font-bold`} />
+                    </button>
+                </div>
             )}
 
-            {/* Route Timeline */}
-            {normalizedRoute.length > 0 && (
+            {/* Tour Header */}
+            <div className="relative group pt-2"> 
+                <TourHeader 
+                    title={tour.title}
+                    packageName={selectedPackage?.name}
+                    duration={currentDuration}
+                    price={currentPrice}
+                    onEnquire={handleEnquire}
+                    isModalOpen={isConnectOpen}
+                />
+            </div>
+
+            {/* Itinerary Tabs */}
+            <section id="full-itinerary" className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+               <div className="flex justify-between items-center mb-6">
+                 <h2 className="text-2xl font-bold font-serif flex items-center gap-2">
+                    <i className="pi pi-calendar text-blue-600" />
+                    Detailed Itinerary
+                 </h2>
+                 <button className="text-blue-600 text-sm font-medium flex items-center gap-1 hover:text-blue-800">
+                   <i className="pi pi-download" /> Download PDF
+                 </button>
+               </div>
+               
+               <div className="mb-8">
+                 <ItineraryTabs 
+                   key={selectedPackage?.id || "default"} 
+                   itinerary={currentItinerary || []}
+                   sightseeing={currentSightseeing}
+                   accommodation={currentAccommodation}
+                   meals={currentMeals}
+                   exclusions={currentExclusions}
+                   instructions={currentInstructions}
+                   highlights={currentDetailedHighlights}
+                 />
+               </div>
+            </section>
+
+             {/* Route Timeline */}
+             {normalizedRoute.length > 0 && (
               <section className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
                 <h2 className="text-2xl font-bold font-serif mb-4">Destination Routes</h2>
                 <RouteTimeline route={normalizedRoute} />
-
               </section>
             )}
 
             {/* About */}
-            <section className="bg-white p-8 rounded-2xl shadow-sm">
+            <section className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
               <h2 className="text-2xl font-bold font-serif mb-4">About the Experience</h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 {tour.description}
@@ -182,42 +232,6 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
                   </div>
               </div>
             </section>
-
-            {/* Itinerary Tabs */}
-            <section id="full-itinerary" className="bg-white p-8 rounded-2xl shadow-sm">
-               <div className="flex justify-between items-center mb-6">
-                 <h2 className="text-2xl font-bold font-serif">Your Itinerary</h2>
-                 <button className="text-blue-600 text-sm font-medium flex items-center gap-1">
-                   <i className="pi pi-download" /> Download PDF
-                 </button>
-               </div>
-               
-               <div className="mb-8">
-                 <ItineraryTabs 
-                   key={selectedPackage?.id || "default"} 
-                   items={currentItinerary || []} 
-                 />
-               </div>
-            </section>
-          </div>
-
-          {/* Sidebar */}
-          <div className="space-y-8">
-             {/* Booking Card - Moved to top of sidebar */}
-             <div className="sticky top-24 z-20">
-                <div className="hidden lg:block">
-                  <BookingCard 
-                    price={currentPrice} 
-                    duration={currentDuration || "Duration"} 
-                    packageName={selectedPackage?.name}
-                    onEnquire={handleEnquire}
-                  />
-                </div>
-                <div className="mt-8 lg:mt-16">
-                  <DealCountdown onClaim={handleEnquire} />
-                </div>
-                {/* <InquiryForm /> */}
-             </div>
           </div>
         </div>
       </div>
