@@ -135,3 +135,10 @@ export interface Tour {
 export interface ItineraryProps {
   items: ItineraryItem[];
 }
+
+export interface DurationSelectorProps {
+  packages: Package[];
+  selectedPackage: Package | null;
+  tourId: string;
+  onPackageChange?: (pkg: Package) => void;
+}
