@@ -53,7 +53,7 @@ export default function HeroCarousel({ images, title, packageName, location, rat
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.2 }}
         >
-          <span className="uppercase tracking-widest text-sm font-medium mb-4 block">Destinations / {location}</span>
+          {/* <span className="uppercase tracking-widest text-sm font-medium mb-4 block">Destinations / {location}</span> */}
           
           {packageName ? (
             <>
@@ -64,10 +64,10 @@ export default function HeroCarousel({ images, title, packageName, location, rat
           ) : (
              <h1 className="text-5xl md:text-7xl font-bold font-serif mb-4">{title}</h1>
           )}
-          <div className="flex items-center justify-center gap-2 text-yellow-400 text-xl">
+          {/* <div className="flex items-center justify-center gap-2 text-yellow-400 text-xl">
              <i className="pi pi-star-fill" />
              <span className="text-white font-medium">{rating} (223 Reviews)</span>
-          </div>
+          </div> */}
         </motion.div>
       </div>
 

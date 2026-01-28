@@ -20,8 +20,15 @@ export const tours = [
         image: "/images/paris.png",
         images: ["/images/paris.png", "/images/venice.png", "/images/santorini.png"],
         route: [
+          { city: "London", days: 3 },
           { city: "Paris", days: 3 },
-          { city: "Zurich", days: 2 }
+          { city: "Netherlands", days: 1 },
+          { city: "Germany", days: 1 },
+          { city: "Switzerland", days: 3 },
+          { city: "Innsbruck", days: 1 },
+          { city: "Venice", days: 1 },
+          { city: "Florence", days: 1 },
+          { city: "Rome", days: 1 }
         ],
         highlights: ["Eiffel Tower Visit", "Seine River Cruise", "Zurich Old Town"],
         detailedHighlights: [
