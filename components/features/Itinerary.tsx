@@ -63,7 +63,7 @@ export default function Itinerary({ items }: ItineraryProps) {
                   {index + 1 < 10 ? `0${index + 1}` : index + 1}
                 </div>
 
-                {/* Header (Clickable) */}
+                {/* Header */}
                 <div 
                   className="cursor-pointer group"
                   onClick={() => toggleItem(index)}
