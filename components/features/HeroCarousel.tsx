@@ -24,7 +24,7 @@ export default function HeroCarousel({ images, title, packageName, location, rat
   };
 
   return (
-    <div className="relative h-[40vh] w-full overflow-hidden group">
+    <div className="relative h-[50vh] min-h-[400px] w-full overflow-hidden group">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
@@ -57,12 +57,12 @@ export default function HeroCarousel({ images, title, packageName, location, rat
           
           {packageName ? (
             <>
-               <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold font-serif mb-6 leading-tight drop-shadow-lg bg-gradient-to-r from-white via-blue-100 to-blue-200 bg-clip-text text-transparent">
+               <h1 className="text-3xl md:text-6xl lg:text-7xl font-bold font-serif mb-6 leading-tight drop-shadow-lg bg-gradient-to-r from-white via-orange-100 to-orange-200 bg-clip-text text-transparent px-2">
                   {packageName}
                </h1>
             </>
           ) : (
-             <h1 className="text-5xl md:text-7xl font-bold font-serif mb-4">{title}</h1>
+             <h1 className="text-4xl md:text-7xl font-bold font-serif mb-4 px-2">{title}</h1>
           )}
           {/* <div className="flex items-center justify-center gap-2 text-yellow-400 text-xl">
              <i className="pi pi-star-fill" />
@@ -74,13 +74,13 @@ export default function HeroCarousel({ images, title, packageName, location, rat
       {/* Navigation Buttons */}
       <button 
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100"
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-100 lg:opacity-0 lg:group-hover:opacity-100"
       >
         <i className="pi pi-chevron-left text-2xl" />
       </button>
       <button 
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-0 group-hover:opacity-100"
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all opacity-100 lg:opacity-0 lg:group-hover:opacity-100"
       >
         <i className="pi pi-chevron-right text-2xl" />
       </button>

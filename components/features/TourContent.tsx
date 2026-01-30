@@ -80,7 +80,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-32 lg:pb-16">
+    <div className="min-h-screen bg-gray-50 pb-32 lg:pb-16 w-full">
       <ScrollTop />
       <ConnectDialog isOpen={isConnectOpen} onClose={() => setIsConnectOpen(false)} />
       
@@ -93,6 +93,21 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
         location={dynamicLocation} 
         rating={tour.rating} 
       />
+
+      {/* Mobile Package Selector - Full Width Carousel */}
+      {hasPackages && (
+        <div className="lg:hidden mt-8 mb-2 px-4">
+           {/* Passing padding-right to the component or handling it in container to ensure end card is visible */}
+           <PackageSelector 
+             packages={tour.packages!} 
+             selectedPackage={selectedPackage} 
+             tourId={tour.id}
+             onPackageChange={setSelectedPackage}
+             layout="horizontal"
+             className="!bg-transparent !shadow-none !border-none !p-0"
+           />
+        </div>
+      )}
 
       <div className="container mx-auto px-4 lg:px-8 py-8">
         
@@ -108,7 +123,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
              <div className="space-y-8 w-full">
                 {/* Package Selector */}
                 {hasPackages && (
-                    <div className="min-w-[380px] lg:min-w-0"> {/* Prevent content squashing during transition */}
+                    <div className="min-w-[380px] lg:min-w-0 hidden lg:block"> {/* Only show on desktop sidebar */}
                         <PackageSelector 
                           packages={tour.packages!} 
                           selectedPackage={selectedPackage} 
@@ -125,11 +140,11 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
             
             {/* Sticky Toggle Button */}
             {!isConnectOpen && (
-                <div className="sticky top-28 z-[100] flex justify-end pointer-events-none -mb-12 pr-2">
+                <div className="sticky top-28 z-[100] hidden lg:flex justify-end pointer-events-none -mb-12 pr-2">
                     <Tooltip target=".toggle-btn" position="left" />
                     <button 
                         onClick={() => setIsSidebarOpen(!isSidebarOpen)}
-                        className="toggle-btn pointer-events-auto bg-white text-blue-600 hover:bg-blue-50 hover:text-blue-700 transition-all p-2.5 rounded-full shadow-lg border border-gray-100 backdrop-blur-sm transform hover:scale-105"
+                        className="toggle-btn pointer-events-auto bg-white text-orange-600 hover:bg-orange-50 hover:text-orange-700 transition-all p-2.5 rounded-full shadow-lg border border-gray-100 backdrop-blur-sm transform hover:scale-105"
                         data-pr-tooltip={isSidebarOpen ? "Hide Packages" : "Show Packages"}
                     >
                         <i className={`pi ${isSidebarOpen ? 'pi-angle-double-left' : 'pi-angle-double-right'} text-lg font-bold`} />
@@ -150,18 +165,18 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
             </div>
 
             {/* Itinerary Tabs */}
-            <section id="full-itinerary" className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <section id="full-itinerary" className="bg-white p-4 md:p-8 rounded-2xl shadow-sm border border-gray-100">
                <div className="flex justify-between items-center mb-6">
                  <h2 className="text-2xl font-bold font-serif flex items-center gap-2">
-                    <i className="pi pi-calendar text-blue-600" />
+                    <i className="pi pi-calendar text-orange-600" />
                     Detailed Itinerary
                  </h2>
-                 <button className="text-blue-600 text-sm font-medium flex items-center gap-1 hover:text-blue-800">
+                 <button className="text-orange-600 text-sm font-medium flex items-center gap-1 hover:text-orange-800">
                    <i className="pi pi-download" /> Download PDF
                  </button>
                </div>
                
-               <div className="mb-8">
+               <div className="mb-0 md:mb-8">
                  <ItineraryTabs 
                    key={selectedPackage?.id || "default"} 
                    itinerary={currentItinerary || []}
@@ -177,14 +192,14 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
 
              {/* Route Timeline */}
              {normalizedRoute.length > 0 && (
-              <section className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100">
+              <section className="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-gray-100">
                 <h2 className="text-2xl font-bold font-serif mb-4">Destination Routes</h2>
                 <RouteTimeline route={normalizedRoute} />
               </section>
             )}
 
             {/* About */}
-            <section className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+            <section className="bg-white p-4 md:p-8 rounded-2xl shadow-sm border border-gray-100">
               <h2 className="text-2xl font-bold font-serif mb-4">About the Experience</h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 {tour.description}
@@ -194,7 +209,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
                  <div className="mb-8">
                    <h3 className="text-xl font-bold text-gray-900 mb-4">Trip Highlights</h3>
                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
-                     {/* Combining dynamic highlights with some static ones for "more items" request */}
+                     
                      {[...currentHighlights, "Professional English Speaking Guide", "All Entry Fees Included", "Comfortable AC Coach"].map((highlight, idx) => (
                        <li key={idx} className="flex items-start gap-3">
                          <i className="pi pi-check-circle text-green-500 text-lg mt-0.5" />
@@ -206,7 +221,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
               )}
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8 pt-8 border-t border-gray-100">
-                  <div className="text-center p-4 bg-blue-50 hover:bg-blue-600 rounded-xl border border-blue-100 hover:border-blue-600 shadow-sm hover:shadow-md transition-all group duration-300">
+                  <div className="text-center p-4 bg-teal-50 hover:bg-teal-600 rounded-xl border border-teal-100 hover:border-teal-600 shadow-sm hover:shadow-md transition-all group duration-300">
                     <div className="w-16 h-16 mx-auto bg-white rounded-full flex items-center justify-center mb-3 shadow-sm group-hover:scale-110 transition-transform overflow-hidden">
                       <Image src="/images/amenities/hotel.png" alt="Hotel" width={64} height={64} className="object-cover w-full h-full" />
                     </div>
@@ -244,11 +259,11 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
         <div className="flex items-center justify-between gap-4">
           <div>
              <p className="text-xs text-gray-500 uppercase tracking-wider font-medium">Starting from</p>
-             <p className="text-xl font-bold text-blue-600">{currentPrice}</p>
+             <p className="text-xl font-bold text-orange-600">{currentPrice}</p>
           </div>
           <button 
             onClick={handleEnquire}
-            className="bg-blue-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-blue-700 transition-colors flex-1 max-w-[200px]"
+            className="bg-orange-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg hover:bg-orange-700 transition-colors flex-1 max-w-[200px]"
           >
             Enquire Now
           </button>

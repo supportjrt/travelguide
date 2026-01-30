@@ -34,7 +34,7 @@ export default function Itinerary({ items }: ItineraryProps) {
       <div className="flex justify-end mb-4">
         <button 
           onClick={toggleAll}
-          className="text-sm font-medium text-blue-600 hover:text-blue-700 flex items-center gap-1 transition-colors"
+          className="text-sm font-medium text-orange-600 hover:text-orange-700 flex items-center gap-1 transition-colors"
         >
           {allExpanded ? (
             <>
@@ -57,7 +57,7 @@ export default function Itinerary({ items }: ItineraryProps) {
                 {/* Day Marker */}
                 <div 
                   className={`absolute left-0 top-0 w-10 h-10 rounded-full flex items-center justify-center font-bold text-lg border-4 border-white shadow-sm transition-colors ${
-                    isOpen ? "bg-blue-600 text-white" : "bg-blue-100 text-blue-600"
+                    isOpen ? "bg-orange-600 text-white" : "bg-orange-100 text-orange-600"
                   }`}
                 >
                   {index + 1 < 10 ? `0${index + 1}` : index + 1}
@@ -69,9 +69,9 @@ export default function Itinerary({ items }: ItineraryProps) {
                   onClick={() => toggleItem(index)}
                 >
                   <div className="flex justify-between items-start mb-2">
-                    <h3 className="text-lg font-bold group-hover:text-blue-600 transition-colors">{item.title}</h3>
+                    <h3 className="text-lg font-bold group-hover:text-orange-600 transition-colors">{item.title}</h3>
                     <div className="flex items-center gap-3">
-                      <span className="text-xs bg-blue-50 text-blue-600 px-2 py-1 rounded">{item.activity}</span>
+                      <span className="text-xs bg-orange-50 text-orange-600 px-2 py-1 rounded">{item.activity}</span>
                       <i className={`pi pi-chevron-down text-gray-400 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`} />
                     </div>
                   </div>
@@ -88,7 +88,7 @@ export default function Itinerary({ items }: ItineraryProps) {
                       className="overflow-hidden"
                     >
                       <div 
-                        className="text-gray-600 text-sm mb-4 prose prose-blue prose-sm max-w-none"
+                        className="text-gray-600 text-sm mb-4 prose prose-orange prose-sm max-w-none"
                         dangerouslySetInnerHTML={{ __html: item.description }}
                       />
                       {item.image && (

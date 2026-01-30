@@ -22,12 +22,12 @@ export default function BookingCard({
       <div className="mb-6">
         {packageName && (
           <div className="mb-2">
-             <span className="text-sm font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded-md">{packageName}</span>
+             <span className="text-sm font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded-md">{packageName}</span>
           </div>
         )}
         <span className="text-xs text-gray-500 uppercase font-bold tracking-wider">Starting From</span>
         <div className="flex items-baseline gap-1 mt-1">
-          <span className="text-4xl font-bold text-blue-600">{price}</span>
+          <span className="text-4xl font-bold text-orange-600">{price}</span>
         </div>
         <p className="text-sm text-gray-500 mt-2 font-medium">{duration}</p>
       </div>
@@ -36,7 +36,7 @@ export default function BookingCard({
 
       <button 
         onClick={onEnquire}
-        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl mb-3 transition-all shadow-lg shadow-blue-200 transform hover:-translate-y-1"
+        className="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-4 rounded-xl mb-3 transition-all shadow-lg shadow-orange-200 transform hover:-translate-y-1"
       >
         Enquire Now
       </button>

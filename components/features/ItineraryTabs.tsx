@@ -19,15 +19,15 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
   return (
     <div>
       {/* Tabs Header */}
-      <div className="sticky top-[85px] z-40 bg-white flex gap-3 mb-8 border-b border-gray-100 pb-4 overflow-x-auto scrollbar-hide snap-x -mx-6 px-6 md:mx-0 md:px-0 pt-4">
+      <div className="sticky top-[85px] z-40 bg-white flex flex-wrap md:flex-nowrap gap-2 md:gap-3 mb-6 md:mb-8 border-b border-gray-100 pb-2 md:overflow-x-auto w-full md:snap-x max-w-full pt-4 px-1">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
-            className={`px-6 py-3 rounded-lg font-medium text-sm transition-all flex items-center gap-2 whitespace-nowrap flex-shrink-0 snap-start ${
+            className={`px-5 py-2.5 rounded-lg font-bold text-sm transition-all flex items-center gap-2 flex-shrink-0 snap-start border ${
               activeTab === tab.id
-                ? "bg-orange-500 text-white shadow-lg shadow-orange-200"
-                : "bg-white border border-gray-200 text-gray-600 hover:bg-gray-50"
+                ? "bg-orange-500 text-white border-orange-500 shadow-md transform scale-105"
+                : "bg-white border-gray-200 text-gray-600 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200"
             }`}
           >
             {tab.icon && <i className={tab.icon} />}
@@ -52,7 +52,7 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
                 {highlights.map((highlight, index) => (
                   <li key={index} className="flex items-start gap-3 p-3 border border-gray-50 rounded-lg hover:bg-orange-50/50 transition-colors">
                     <i className="pi pi-star-fill text-orange-500 mt-1 shrink-0" />
-                    <span className="text-gray-700 font-medium leading-relaxed">{highlight}</span>
+                    <span className="text-gray-700 font-medium leading-relaxed break-words min-w-0 flex-1">{highlight}</span>
                   </li>
                 ))}
               </ul>
@@ -60,7 +60,7 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
               // Fallback to itinerary summary if no highlights provided
               itinerary.map((item, index) => (
                 <div key={index} className="flex gap-4 p-4 border border-gray-100 rounded-xl hover:shadow-md transition-shadow">
-                  <div className="w-16 h-16 bg-blue-50 rounded-lg flex flex-col items-center justify-center text-blue-600 shrink-0">
+                  <div className="w-16 h-16 bg-orange-50 rounded-lg flex flex-col items-center justify-center text-orange-600 shrink-0">
                     <span className="text-xs font-bold uppercase">Day</span>
                     <span className="text-2xl font-bold">{item.day}</span>
                   </div>
@@ -114,7 +114,7 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
                 <div key={countryIndex} className="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-sm">
                   {/* Country Header */}
                   <div className="bg-gray-50 px-6 py-4 border-b border-gray-100 flex items-center gap-3">
-                    <i className="pi pi-map-marker text-blue-600 text-xl" />
+                    <i className="pi pi-map-marker text-orange-600 text-xl" />
                     <h3 className="text-lg font-bold text-gray-900 tracking-wide uppercase">{country}</h3>
                   </div>
                   
@@ -123,13 +123,13 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
                     {items.map((item, index) => (
                       <div key={index} className="space-y-3">
                         <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-blue-500 rounded-full" />
+                          <div className="w-2 h-2 bg-orange-500 rounded-full" />
                           <h4 className="font-bold text-gray-800 text-lg">{item.city}</h4>
                         </div>
                         <ul className="space-y-2 pl-4 border-l-2 border-gray-100 ml-1">
                           {item.activities.map((activity, actIndex) => (
                             <li key={actIndex} className="text-sm text-gray-600 leading-relaxed flex items-start gap-2">
-                              <span className="text-blue-400 mt-1.5 text-[10px]">●</span>
+                              <span className="text-orange-400 mt-1.5 text-[10px]">●</span>
                               <span>{activity}</span>
                             </li>
                           ))}
@@ -152,7 +152,7 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
             {accommodation && accommodation.length > 0 ? (
               accommodation.map((item, index) => (
                 <div key={index} className="flex gap-4 items-center p-4 border border-gray-100 rounded-xl">
-                  <div className="w-12 h-12 bg-blue-50 rounded-full flex items-center justify-center text-blue-600 shrink-0">
+                  <div className="w-12 h-12 bg-orange-50 rounded-full flex items-center justify-center text-orange-600 shrink-0">
                     <i className="pi pi-building text-xl" />
                   </div>
                   <div>
@@ -191,9 +191,9 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
 
                 {/* Note */}
                 {meals.note && (
-                  <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 flex gap-3 items-start">
-                    <i className="pi pi-info-circle text-blue-600 mt-1 shrink-0" />
-                    <p className="text-blue-800 text-sm font-medium italic leading-relaxed">
+                  <div className="bg-teal-50 border border-teal-100 rounded-xl p-4 flex gap-3 items-start">
+                    <i className="pi pi-info-circle text-teal-600 mt-1 shrink-0" />
+                    <p className="text-teal-800 text-sm font-medium italic leading-relaxed">
                       {meals.note}
                     </p>
                   </div>

@@ -141,4 +141,6 @@ export interface DurationSelectorProps {
   selectedPackage: Package | null;
   tourId: string;
   onPackageChange?: (pkg: Package) => void;
+  className?: string;       // For additional styling
+  layout?: 'vertical' | 'horizontal'; // To control layout direction
 }

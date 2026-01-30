@@ -248,9 +248,9 @@ export const tours = [
             day: 1, 
             title: "Arrive into London, the capital of England and the United Kingdom.", 
             activity: "Transfer", 
-            description: "Greetings! Today marks the commencement of our journey as we embark on a flight to a captivating city renowned for its vibrant culture, cosmopolitan atmosphere, and intriguing history – <b class='text-blue-600'>London</b>, the capital of England." +
+            description: "Greetings! Today marks the commencement of our journey as we embark on a flight to a captivating city renowned for its vibrant culture, cosmopolitan atmosphere, and intriguing history – <b class='text-orange-600'>London</b>, the capital of England." +
             "<br/><br/>" +
-            "Upon arrival, you will be warmly welcomed by our amiable and knowledgeable <b class='text-blue-600'>Tour Manager</b>, who will guide you to your hotel and facilitate a smooth check-in process. Take some time to unwind and enjoy the comforts of your accommodation." +
+            "Upon arrival, you will be warmly welcomed by our amiable and knowledgeable <b class='text-orange-600'>Tour Manager</b>, who will guide you to your hotel and facilitate a smooth check-in process. Take some time to unwind and enjoy the comforts of your accommodation." +
             "<br/><br/>" +
             "<b>Overnight stay at the hotel in London. (Dinner)</b>", 
             image: "/images/paris.png"
@@ -259,13 +259,13 @@ export const tours = [
             day: 2, 
             title: "Guided city tour of London with Changing of Guards. Visit to the famous Madame Tussauds Wax Museum. Ride the London Eye. Enjoy a scenic Thames River Cruise.", 
             activity: "Sightseeing", 
-            description: "Post breakfast, we drive to explore the city of London with our expert local guide. You will see important landmarks like the <b class='text-blue-600'>Big Ben</b>, <b class='text-blue-600'>Houses of Parliament</b>, <b class='text-blue-600'>Westminster Abbey</b>, <b class='text-blue-600'>Trafalgar Square</b>, <b class='text-blue-600'>Piccadilly Circus</b>, <b class='text-blue-600'>Tower Bridge</b>, <b class='text-blue-600'>River Thames</b>, <b class='text-blue-600'>Hyde Park</b> and many more." +
+            description: "Post breakfast, we drive to explore the city of London with our expert local guide. You will see important landmarks like the <b class='text-orange-600'>Big Ben</b>, <b class='text-orange-600'>Houses of Parliament</b>, <b class='text-orange-600'>Westminster Abbey</b>, <b class='text-orange-600'>Trafalgar Square</b>, <b class='text-orange-600'>Piccadilly Circus</b>, <b class='text-orange-600'>Tower Bridge</b>, <b class='text-orange-600'>River Thames</b>, <b class='text-orange-600'>Hyde Park</b> and many more." +
             "<br/><br/>" +
-            "Witness the Changing of the Guards at <b class='text-blue-600'>Buckingham Palace</b> (subject to operation). Next, we proceed to visit the renowned <b class='text-blue-600'>Madame Tussauds wax museum</b>. Be enthralled by the world’s largest wax collection of famous personalities." +
+            "Witness the Changing of the Guards at <b class='text-orange-600'>Buckingham Palace</b> (subject to operation). Next, we proceed to visit the renowned <b class='text-orange-600'>Madame Tussauds wax museum</b>. Be enthralled by the world’s largest wax collection of famous personalities." +
             "<br/><br/>" +
-            "Later we visit <b class='text-blue-600'>London Eye</b>, one of the many iconic highlights of the city. Enjoy scenic views of the city while you ride the London eye. It is one of the most popular tourist attractions in the United Kingdom, standing at 135 meters tall overlooking the river Thames and the beautiful city of London followed by cruise on River Thames." +
+            "Later we visit <b class='text-orange-600'>London Eye</b>, one of the many iconic highlights of the city. Enjoy scenic views of the city while you ride the London eye. It is one of the most popular tourist attractions in the United Kingdom, standing at 135 meters tall overlooking the river Thames and the beautiful city of London followed by cruise on River Thames." +
             "<br/><br/>" +
-            "Experience London from a different angle on a <b class='text-blue-600'>Thames River Cruise</b>, passing by the city’s most famous landmarks in comfort and style." +
+            "Experience London from a different angle on a <b class='text-orange-600'>Thames River Cruise</b>, passing by the city’s most famous landmarks in comfort and style." +
             "<br/><br/>" +
             "<b>Overnight stay at the hotel in London. (Breakfast, Lunch, Dinner)</b>", 
             image: "/images/paris.png"
