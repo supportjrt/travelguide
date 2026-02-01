@@ -12,7 +12,7 @@ export const tours = [
     description: "Embark on a journey through the heart of Europe. Choose from our curated packages ranging from quick getaways to extensive explorations.",
     packages: [
       {
-        id: "europe-tour-packages-2026-london-express",
+        id: "grand-wonders-of-europe-2026",
         duration: "15 Nights/16 Days",
         days: 16,
         name: "GRAND WONDERS OF EUROPE",
@@ -556,6 +556,29 @@ export const tours = [
           { description: "Anything which is not specified in the Itinerary" }
         ],
         highlights: ["Eiffel Tower", "Swiss Alps", "Milan Duomo"],
+        detailedHighlights: [
+          "Value-for-Money holiday which you will cherish for a lifetime",
+          "Visit 9 countries in 13 days: France, Belgium, The Netherlands, Germany, Switzerland, Liechtenstein, Austria, Italy and Vatican City",
+          "All Important attractions and sightseeing included with some new additions. Eiffel Tower 3rd level, Guided tour of Versailles palace, Full day at Disneyland® Paris, River Seine Cruise, Paris by Night tour, Mini Europe, Keukenhof Gardens (till 10th May), Visit traditional village showcasing windmills and wooden houses (from 11th May), Heidelberg Alstadt, Excursion to Jungfrau included, Entrance to Mt. Titlis, Lindt Home of Chocolate, Mini Train ride in Vaduz, Swarovski Crystal Museum, Visit to St. Mark’s Square with Gondola Ride, Photo stop at Leaning Tower of Pisa and entrance to Vatican Museum & Sistine Chapel or The Colosseum with Local guide.",
+          "Guided tour in Paris, Florence & Vatican Museum OR The Colosseum",
+          "Services of a Professional & Knowledgeable Tour Manager accompanying you throughout the tour",
+          "Accommodation in superior 4-star hotels",
+          "Daily Continental buffet breakfast.",
+          "Delicious unlimited meals with variety of Jain, Veg and Nonveg cuisine (Indian / Local) included as per itinerary.",
+          "Daily mineral water bottle (500ml) per person",
+          "Driver tips included"
+        ],
+        additionalDelights: [
+          "A glass of <b>Champagne</b> in <b>France</b>",
+          "<b>Souvenir</b> in <b>Holland</b>",
+          "<b>Waffle</b> in <b>Belgium</b>",
+          "<b>Black Forest Cake</b> in <b>Germany</b>",
+          "<b>Swiss Chocolate Icecream</b> in <b>Swiss</b>",
+          "<b>Pizza and Pasta</b> in <b>Italy</b>",
+          "<b>Gelato Ice cream</b> in <b>Italy</b>",
+          "A glass of local <b>Italian Red or White Wine</b> in <b>Italy</b>",
+          "<b>Masala tea</b> and <b>Dinners</b> in the hotel in select cities"
+        ],
         itinerary: [
           { 
             day: 1, 
@@ -651,7 +674,7 @@ export const tours = [
         ]
       },
       {
-        id: "grand-european-discovery",
+        id: "grand-exclusive-europe",
         duration: "12 Nights/13 Days",
         days: 13,
         name: "GRAND EXCLUSIVE EUROPE",

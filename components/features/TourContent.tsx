@@ -183,6 +183,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
                    exclusions={currentExclusions}
                    instructions={currentInstructions}
                    highlights={currentDetailedHighlights}
+                   additionalDelights={currentAdditionalDelights}
                  />
                </div>
             </section>

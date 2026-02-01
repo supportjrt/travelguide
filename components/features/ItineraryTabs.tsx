@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import ReactMarkdown from "react-markdown";
 import Itinerary from "./Itinerary";
 import { ItineraryTabsProps } from "@/type/model";
 
@@ -66,10 +67,9 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
                   </div>
                   <div>
                     <h4 className="font-bold text-gray-900">{item.title}</h4>
-                    <div 
-                      className="text-sm text-gray-600 mt-1 line-clamp-2 prose prose-sm max-w-none"
-                      dangerouslySetInnerHTML={{ __html: item.description }}
-                    />
+                    <div className="text-sm text-gray-600 mt-1 line-clamp-2 prose prose-sm max-w-none">
+                      <ReactMarkdown>{item.description}</ReactMarkdown>
+                    </div>
                   </div>
                 </div>
               ))
@@ -86,10 +86,15 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
                     {additionalDelights.map((delight, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <i className="pi pi-check text-rose-500 mt-1 font-bold shrink-0" />
-                        <span 
-                          className="text-gray-700 leading-relaxed"
-                          dangerouslySetInnerHTML={{ __html: delight }}
-                        />
+                        <span className="text-gray-700 leading-relaxed">
+                          <ReactMarkdown 
+                            components={{
+                               p: ({node, ...props}) => <span {...props} />
+                            }}
+                          >
+                            {delight.replace(/<b>/g, "**").replace(/<\/b>/g, "**")}
+                          </ReactMarkdown>
+                        </span>
                       </li>
                     ))}
                   </ul>

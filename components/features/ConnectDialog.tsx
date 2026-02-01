@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 
 interface ConnectDialogProps {
   isOpen: boolean;
@@ -16,6 +15,7 @@ export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
   const [time, setTime] = useState("Morning");
   const [timezone, setTimezone] = useState("EST");
   const [error, setError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const formatPhoneNumber = (value: string) => {
     const phoneNumber = value.replace(/\D/g, "");
@@ -28,21 +28,49 @@ export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
     return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
   };
 
-  const handleNextStep = () => {
+  const sendLeadData = async (data: Record<string, any>) => {
+    const response = await fetch('/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+    if (!response.ok) throw new Error('Failed to send request');
+  };
+
+  const handleNextStep = async () => {
     const rawPhone = phone.replace(/\D/g, "");
     if (/^\d{10}$/.test(rawPhone)) {
       setError("");
-      setStep(2);
+      setIsSubmitting(true);
+      
+      try {
+        await sendLeadData({ phone, step: '1' });
+        setStep(2);
+      } catch (err) {
+        console.error("Failed to send step 1 email", err);
+        setStep(2);
+      } finally {
+        setIsSubmitting(false);
+      }
     } else {
       setError("Please enter a valid 10-digit phone number");
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle submission logic
-    console.log("Connect requested for:", { phone, name, time, timezone });
-    setStep(3);
+    setIsSubmitting(true);
+    
+    try {
+      await sendLeadData({ phone, name, time, timezone, step: '2' });
+      console.log("Connect requested for:", { phone, name, time, timezone });
+      setStep(3);
+    } catch (err) {
+      console.error(err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleClose = () => {
@@ -135,9 +163,10 @@ export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
                       <button 
                         type="button"
                         onClick={handleNextStep}
-                        className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-200 transition-all transform hover:-translate-y-1"
+                        disabled={isSubmitting}
+                        className={`w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-200 transition-all transform hover:-translate-y-1 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
                       >
-                        Connect with Expert
+                        {isSubmitting ? "Connecting..." : "Connect with Expert"}
                       </button>
                     </div>
 
@@ -179,12 +208,13 @@ export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
                             </select>
                           </div>
                           
-                          <button 
-                            type="submit"
-                            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-200 transition-all transform hover:-translate-y-1"
-                          >
-                            Request Callback
-                          </button>
+                            <button 
+                              type="submit"
+                              disabled={isSubmitting}
+                              className={`w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-200 transition-all transform hover:-translate-y-1 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                            >
+                              {isSubmitting ? "Sending..." : "Request Callback"}
+                            </button>
                         </motion.div>
                       )}
                     </AnimatePresence>
