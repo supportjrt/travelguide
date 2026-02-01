@@ -8,9 +8,8 @@ export const europeanHighlights: Package = {
   price: "$2,099",
   image: "/images/paris.png",
   images: ["/images/paris.png", "/images/amalfi.png", "/images/santorini.png"], 
-  highlights: ["Eiffel Tower Dinner", "Seine Cruise", "Promenade des Anglais"],
-  itinerary: [ 
-  ],
+  highlights: [],
+  itinerary: [],
   sightseeing: [],
   accommodation: [],
   route: [],
