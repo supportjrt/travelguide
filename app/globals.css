@@ -2,17 +2,36 @@
 
 @theme {
   --font-sans: var(--font-outfit);
+  --font-serif: var(--font-aleo);
+
+  /* Primary Palette */
+  --color-brand-purple: #662d91;
+  --color-brand-red: #be1e2d;
+  --color-brand-orange: #f7941d;
+  --color-brand-yellow: #f8da24;
+
+  /* Secondary / Highlights */
+  --color-accent-teal: #00a79d;
+  --color-accent-orange: #f15a29;
+  --color-accent-red: #ef4136;
+  --color-accent-purple: #913493;
+
+  /* Typography Colors */
+  --color-text-primary: #231f20; /* K100 */
+  --color-text-secondary: #414042; /* K90 */
+  --color-text-muted: #6d6e71; /* K70 */
+  --color-text-light: #939598; /* K50 */
 }
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: var(--color-text-primary);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #ffffff; /* Force light mode for now to match design */
+    --foreground: var(--color-text-primary);
   }
 }
 
@@ -20,4 +39,13 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
 }

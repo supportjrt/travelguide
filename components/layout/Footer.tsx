@@ -29,7 +29,7 @@ const Footer = () => {
           <div className="flex gap-6 text-gray-500 text-xs">
             <Link href="https://jayatravel.com/jaya-travel-tours-terms-conditions/" target="_blank" className="hover:text-white">Terms and Conditions</Link>
             <Link href="https://jayatravel.com/cookie-policy/" target="_blank" className="hover:text-white">Cookie Policy</Link>
-            <Link href="https://jayatravel.com/privacy-policy/" target="_blank" className="hover:text-white">Privacy Policy</Link>
+            <Link href="/privacy-policy/" className="hover:text-white">Privacy Policy</Link>
           </div>
         </div>
       </div>

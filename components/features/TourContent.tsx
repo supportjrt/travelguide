@@ -171,9 +171,6 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
                     <i className="pi pi-calendar text-orange-600" />
                     Detailed Itinerary
                  </h2>
-                 <button className="text-orange-600 text-sm font-medium flex items-center gap-1 hover:text-orange-800">
-                   <i className="pi pi-download" /> Download PDF
-                 </button>
                </div>
                
                <div className="mb-0 md:mb-8">

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Outfit, Aleo } from "next/font/google";
 import "./globals.css";
 
 // PrimeReact Styles
@@ -16,9 +16,18 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 
+const aleo = Aleo({
+  subsets: ["latin"],
+  variable: "--font-aleo",
+});
+
 export const metadata: Metadata = {
   title: "Jaya Travels",
   description: "Luxury Travel Reimagined",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export default function RootLayout({
@@ -37,7 +46,7 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-KP33NSR2');`}
         </Script>
       </head>
-      <body className={`${outfit.variable} antialiased`}>
+      <body className={`${outfit.variable} ${aleo.variable} antialiased`}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-KP33NSR2"

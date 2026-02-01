@@ -527,6 +527,171 @@ export const tours = [
           { day: 7, title: "Lake Como Day Trip", activity: "Excursion", description: "Day trip to beautiful Lake Como.", image: "/images/amalfi.png" },
           { day: 8, title: "Departure", activity: "Transfer", description: "Transfer to airport." }
         ]
+      },
+      {
+        id: "swiss-delight",
+        duration: "6 Nights/7 Days",
+        days: 7,
+        name: "SWISS DELIGHT",
+        price: "$2,499",
+        image: "/images/venice.png",
+        images: ["/images/venice.png", "/images/paris.png", "/images/santorini.png"],
+        route: [{ city: "Zurich", days: 2 }, { city: "Lucerne", days: 2 }, { city: "Interlaken", days: 3 }],
+        highlights: ["Rhine Falls", "Mount Pilatus", "Lake Brienz"],
+        itinerary: [
+          { day: 1, title: "Arrival in Zurich", activity: "Transfer", description: "Welcome to Zurich.", image: "/images/venice.png" },
+          { day: 2, title: "Rhine Falls", activity: "Sightseeing", description: "Visit Europe's largest waterfall.", image: "/images/venice.png" },
+          { day: 3, title: "Zurich to Lucerne", activity: "Train", description: "Train to Lucerne.", image: "/images/venice.png" },
+          { day: 4, title: "Mount Pilatus", activity: "Adventure", description: "Golden round trip to Mt. Pilatus.", image: "/images/venice.png" },
+          { day: 5, title: "Lucerne to Interlaken", activity: "Train", description: " scenic train to Interlaken.", image: "/images/venice.png" },
+          { day: 6, title: "Lake Brienz Cruise", activity: "Leisure", description: "Relaxing boat cruise.", image: "/images/venice.png" },
+          { day: 7, title: "Departure", activity: "Transfer", description: "Transfer to airport." }
+        ]
+      },
+      {
+        id: "italian-escape",
+        duration: "8 Nights/9 Days",
+        days: 9,
+        name: "ITALIAN ESCAPE",
+        price: "$2,899",
+        image: "/images/amalfi.png",
+        images: ["/images/amalfi.png", "/images/venice.png", "/images/santorini.png"],
+        route: [{ city: "Rome", days: 3 }, { city: "Florence", days: 3 }, { city: "Venice", days: 3 }],
+        highlights: ["Colosseum", "Uffizi Gallery", "Grand Canal"],
+        itinerary: [
+          { day: 1, title: "Arrival in Rome", activity: "Transfer", description: "Benvenuto a Roma!", image: "/images/amalfi.png" },
+          { day: 2, title: "Ancient Rome", activity: "Sightseeing", description: "Colosseum and Roman Forum.", image: "/images/amalfi.png" },
+          { day: 3, title: "Vatican City", activity: "Culture", description: "St. Peter's Basilica.", image: "/images/amalfi.png" },
+          { day: 4, title: "Rome to Florence", activity: "Train", description: "High-speed train to Florence.", image: "/images/amalfi.png" },
+          { day: 5, title: "Florence Art", activity: "Museum", description: "Uffizi Gallery tour.", image: "/images/amalfi.png" },
+          { day: 6, title: "Tuscan Countryside", activity: "Excursion", description: "Wine tasting in Chianti.", image: "/images/amalfi.png" },
+          { day: 7, title: "Florence to Venice", activity: "Train", description: "Train to Venice.", image: "/images/venice.png" },
+          { day: 8, title: "Venice Highlights", activity: "Walking Tour", description: "St. Mark's Square and Rialto Bridge.", image: "/images/venice.png" },
+          { day: 9, title: "Departure", activity: "Transfer", description: "Arrivederci!" }
+        ]
+      },
+      {
+        id: "french-romance",
+        duration: "5 Nights/6 Days",
+        days: 6,
+        name: "FRENCH ROMANCE",
+        price: "$1,999",
+        image: "/images/paris.png",
+        images: ["/images/paris.png", "/images/amalfi.png", "/images/santorini.png"],
+        route: [{ city: "Paris", days: 4 }, { city: "Nice", days: 2 }],
+        highlights: ["Eiffel Tower Dinner", "Seine Cruise", "Promenade des Anglais"],
+        itinerary: [
+           { day: 1, title: "Paris Arrival", activity: "Transfer", description: "Welcome to the City of Love.", image: "/images/paris.png" },
+           { day: 2, title: "Romantic Seine", activity: "Cruise", description: "Dinner cruise on the Seine.", image: "/images/paris.png" },
+           { day: 3, title: "Louvre Museum", activity: "Culture", description: "See the Mona Lisa.", image: "/images/paris.png" },
+           { day: 4, title: "Montmartre", activity: "Walking Tour", description: "Artists' quarter tour.", image: "/images/paris.png" },
+           { day: 5, title: "Paris to Nice", activity: "Flight", description: "Fly to Nice on the Riviera.", image: "/images/santorini.png" },
+           { day: 6, title: "Departure", activity: "Transfer", description: "Au revoir!" }
+        ]
+      },
+      {
+        id: "spanish-fiesta",
+        duration: "7 Nights/8 Days",
+        days: 8,
+        name: "SPANISH FIESTA",
+        price: "$2,650",
+        image: "/images/santorini.png",
+        images: ["/images/santorini.png", "/images/paris.png", "/images/venice.png"],
+        route: [{ city: "Madrid", days: 2 }, { city: "Seville", days: 2 }, { city: "Barcelona", days: 4 }],
+        highlights: ["Royal Palace", "Flamenco Show", "Sagrada Familia"],
+        itinerary: [
+          { day: 1, title: "Arrival in Madrid", activity: "Transfer", description: "Welcome to Spain.", image: "/images/santorini.png" },
+          { day: 2, title: "Madrid Highlights", activity: "Sightseeing", description: "Prado Museum and Royal Palace.", image: "/images/santorini.png" },
+          { day: 3, title: "Madrid to Seville", activity: "Train", description: "AVE train to Seville.", image: "/images/santorini.png" },
+          { day: 4, title: "Seville Culture", activity: "Show", description: "Alcazar and Flamenco show.", image: "/images/santorini.png" },
+          { day: 5, title: "Seville to Barcelona", activity: "Flight", description: "Fly to Barcelona.", image: "/images/santorini.png" },
+          { day: 6, title: "Gaudi Tour", activity: "Sightseeing", description: "Park Guell and Sagrada Familia.", image: "/images/santorini.png" },
+          { day: 7, title: "Gothic Quarter", activity: "Walking Tour", description: "Explore the historic center.", image: "/images/santorini.png" },
+          { day: 8, title: "Departure", activity: "Transfer", description: "Adios!" }
+        ]
+      },
+      {
+        id: "german-explorer",
+        duration: "6 Nights/7 Days",
+        days: 7,
+        name: "GERMAN EXPLORER",
+        price: "$2,399",
+        image: "/images/venice.png",
+        images: ["/images/venice.png", "/images/paris.png", "/images/amalfi.png"],
+        route: [{ city: "Munich", days: 3 }, { city: "Berlin", days: 4 }],
+        highlights: ["Neuschwanstein Castle", "Brandenburg Gate", "Berlin Wall"],
+        itinerary: [
+           { day: 1, title: "Arrival in Munich", activity: "Transfer", description: "Welcome to Bavaria.", image: "/images/venice.png" },
+           { day: 2, title: "Castles Tour", activity: "sightseeing", description: "Day trip to Neuschwanstein.", image: "/images/venice.png" },
+           { day: 3, title: "Munich City", activity: "Walking Tour", description: "Marienplatz and Hofbrauhaus.", image: "/images/venice.png" },
+           { day: 4, title: "Munich to Berlin", activity: "Train", description: "ICE train to Berlin.", image: "/images/venice.png" },
+           { day: 5, title: "Berlin History", activity: "Sightseeing", description: "Brandenburg Gate and Reichstag.", image: "/images/venice.png" },
+           { day: 6, title: "Berlin Wall", activity: "Culture", description: "East Side Gallery.", image: "/images/venice.png" },
+           { day: 7, title: "Departure", activity: "Transfer", description: "Tschuss!" }
+        ]
+      },
+      {
+        id: "amsterdam-brussels",
+        duration: "5 Nights/6 Days",
+        days: 6,
+        name: "DUTCH & BELGIAN TREATS",
+        price: "$2,100",
+        image: "/images/paris.png",
+        images: ["/images/paris.png", "/images/venice.png", "/images/santorini.png"],
+        route: [{ city: "Amsterdam", days: 3 }, { city: "Brussels", days: 3 }],
+        highlights: ["Canal Cruise", "Van Gogh Museum", "Grand Place"],
+        itinerary: [
+           { day: 1, title: "Arrival in Amsterdam", activity: "Transfer", description: "Welcome to the Netherlands.", image: "/images/paris.png" },
+           { day: 2, title: "Cultural Amsterdam", activity: "Museum", description: "Rijksmuseum and Van Gogh Museum.", image: "/images/paris.png" },
+           { day: 3, title: "Canals & Windmills", activity: "Excursion", description: "Zaanse Schans tour.", image: "/images/paris.png" },
+           { day: 4, title: "Amsterdam to Brussels", activity: "Train", description: "Thalys train to Brussels.", image: "/images/paris.png" },
+           { day: 5, title: "Brussels Highlights", activity: "Sightseeing", description: "Atomium and Grand Place.", image: "/images/paris.png" },
+           { day: 6, title: "Departure", activity: "Transfer", description: "Tot ziens!" }
+        ]
+      },
+      {
+        id: "scandinavian-saga",
+        duration: "9 Nights/10 Days",
+        days: 10,
+        name: "SCANDINAVIAN SAGA",
+        price: "$3,599",
+        image: "/images/santorini.png",
+        images: ["/images/santorini.png", "/images/paris.png", "/images/venice.png"],
+        route: [{ city: "Copenhagen", days: 3 }, { city: "Oslo", days: 3 }, { city: "Stockholm", days: 4 }],
+        highlights: ["Tivoli Gardens", "Viking Ship Museum", "Vasa Museum"],
+        itinerary: [
+           { day: 1, title: "Arrival in Copenhagen", activity: "Transfer", description: "Welcome to Denmark.", image: "/images/santorini.png" },
+           { day: 2, title: "Copenhagen Charm", activity: "Sightseeing", description: "Little Mermaid and Nyhavn.", image: "/images/santorini.png" },
+           { day: 3, title: "Tivoli Gardens", activity: "Leisure", description: "Evening at Tivoli.", image: "/images/santorini.png" },
+           { day: 4, title: "Copenhagen to Oslo", activity: "Cruise", description: "Overnight cruise to Oslo.", image: "/images/santorini.png" },
+           { day: 5, title: "Oslo History", activity: "Museum", description: "Viking Ship Museum.", image: "/images/santorini.png" },
+           { day: 6, title: "Oslo to Stockholm", activity: "Train", description: "Train to Stockholm.", image: "/images/santorini.png" },
+           { day: 7, title: "Stockholm Old Town", activity: "Walking Tour", description: "Gamla Stan.", image: "/images/santorini.png" },
+           { day: 8, title: "Vasa Museum", activity: "Culture", description: "See the Vasa ship.", image: "/images/santorini.png" },
+           { day: 9, title: "Archipelago", activity: "Boat Tour", description: "Stockholm archipelago cruise.", image: "/images/santorini.png" },
+           { day: 10, title: "Departure", activity: "Transfer", description: "Farvel!" }
+        ]
+      },
+      {
+        id: "greek-odyssey",
+        duration: "7 Nights/8 Days",
+        days: 8,
+        name: "GREEK ODYSSEY",
+        price: "$2,799",
+        image: "/images/santorini.png",
+        images: ["/images/santorini.png", "/images/amalfi.png", "/images/venice.png"],
+        route: [{ city: "Athens", days: 2 }, { city: "Santorini", days: 3 }, { city: "Mykonos", days: 3 }],
+        highlights: ["Acropolis", "Sunset in Oia", "Mykonos Windmills"],
+        itinerary: [
+           { day: 1, title: "Arrival in Athens", activity: "Transfer", description: "Welcome to Greece.", image: "/images/santorini.png" },
+           { day: 2, title: "Ancient Athens", activity: "Sightseeing", description: "Acropolis and Parthenon.", image: "/images/santorini.png" },
+           { day: 3, title: "Athens to Santorini", activity: "Ferry", description: "High-speed ferry to Santorini.", image: "/images/santorini.png" },
+           { day: 4, title: "Santorini Views", activity: "Leisure", description: "Explore Fira and Oia.", image: "/images/santorini.png" },
+           { day: 5, title: "Santorini to Mykonos", activity: "Ferry", description: "Ferry to Mykonos.", image: "/images/santorini.png" },
+           { day: 6, title: "Mykonos Beaches", activity: "Relaxation", description: "Enjoy the beaches.", image: "/images/santorini.png" },
+           { day: 7, title: "Mykonos Town", activity: "Walking Tour", description: "Little Venice and windmills.", image: "/images/santorini.png" },
+           { day: 8, title: "Departure", activity: "Transfer", description: "Yassas!" }
+        ]
       }
     ]
   },

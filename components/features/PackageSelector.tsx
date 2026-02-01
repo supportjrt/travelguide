@@ -27,9 +27,29 @@ export default function PackageSelector({
   // Filter Logic
   useEffect(() => {
     if (searchQuery.length >= 3) {
-      const filtered = packages.filter(pkg => 
-        pkg.name.toLowerCase().includes(searchQuery.toLowerCase())
-      );
+      const deepSearch = (obj: any, query: string): boolean => {
+        if (!obj) return false;
+        
+        if (typeof obj === 'string') {
+          return obj.toLowerCase().includes(query.toLowerCase());
+        }
+        
+        if (typeof obj === 'number') {
+          return obj.toString().includes(query);
+        }
+        
+        if (Array.isArray(obj)) {
+          return obj.some(item => deepSearch(item, query));
+        }
+        
+        if (typeof obj === 'object') {
+          return Object.values(obj).some(value => deepSearch(value, query));
+        }
+        
+        return false;
+      };
+
+      const filtered = packages.filter(pkg => deepSearch(pkg, searchQuery));
       setFilteredPackages(filtered);
     } else {
       setFilteredPackages(packages);
