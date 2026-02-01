@@ -74,13 +74,13 @@ export interface Package {
   route: RouteItem[] | string[];
   highlights: string[];
   itinerary: ItineraryItem[];
-  sightseeing?: SightseeingItem[];
-  accommodation?: AccommodationItem[];
-  meals?: MealInfo;
-  exclusions?: ExclusionItem[];
+  sightseeing: SightseeingItem[];
+  accommodation: AccommodationItem[];
+  meals: MealInfo;
+  exclusions: ExclusionItem[];
   instructions?: InstructionItem[];
-  detailedHighlights?: string[];
-  additionalDelights?: string[];
+  detailedHighlights: string[];
+  additionalDelights: string[];
 }
 
 // ...

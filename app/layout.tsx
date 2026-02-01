@@ -46,7 +46,7 @@ export default function RootLayout({
           })(window,document,'script','dataLayer','GTM-KP33NSR2');`}
         </Script>
       </head>
-      <body className={`${outfit.variable} ${aleo.variable} antialiased`}>
+      <body className={`${aleo.variable} antialiased`}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-KP33NSR2"
