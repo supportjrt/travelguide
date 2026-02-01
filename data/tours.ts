@@ -6,14 +6,14 @@ import { grandFascinatingEurope } from "./packages/05-grand-fascinating-europe";
 import { fascinatingEurope } from "./packages/06-fascinating-europe";
 import { europeanGrandeur } from "./packages/07-european-grandeur";
 import { miniGrandeur } from "./packages/08-mini-grandeur";
-import { swissDelight } from "./packages/09-swiss-delight";
-import { italianEscape } from "./packages/10-italian-escape";
-import { frenchRomance } from "./packages/11-french-romance";
-import { spanishFiesta } from "./packages/12-spanish-fiesta";
-import { germanExplorer } from "./packages/13-german-explorer";
-import { amsterdamBrussels } from "./packages/14-amsterdam-brussels";
-import { scandinavianSaga } from "./packages/15-scandinavian-saga";
-import { greekOdyssey } from "./packages/16-greek-odyssey";
+import { grandEuropeanHighlights } from "./packages/09-grand-european-highlights";
+import { beautyOfEurope } from "./packages/10-beauty-of-europe";
+import { europeanHighlights } from "./packages/11-european-highlights";
+import { soundsOfSwiss } from "./packages/12-sounds-of-swiss";
+import { jewelsOfEastEurope } from "./packages/13-jewels-of-east-europe";
+import { glimpsesOfUK } from "./packages/14-glimpses-of-uk";
+import { scandinavianDelights } from "./packages/15-scandinavian-delights";
+import { spanishFiestaWithPortugal } from "./packages/16-spanish-fiesta-with-portugal";
 
 export const tours = [
   {
@@ -36,14 +36,14 @@ export const tours = [
       fascinatingEurope,
       europeanGrandeur,
       miniGrandeur,
-      swissDelight,
-      italianEscape,
-      frenchRomance,
-      spanishFiesta,
-      germanExplorer,
-      amsterdamBrussels,
-      scandinavianSaga,
-      greekOdyssey
+      grandEuropeanHighlights,
+      beautyOfEurope,
+      europeanHighlights,
+      soundsOfSwiss,
+      jewelsOfEastEurope,
+      glimpsesOfUK,
+      scandinavianDelights,
+      spanishFiestaWithPortugal
     ]
   }
 ];

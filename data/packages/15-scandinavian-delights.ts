@@ -1,11 +1,11 @@
 import { Package } from "../../type/model";
 
-export const scandinavianSaga: Package = {
-  id: "scandinavian-saga",
-  duration: "11 Nights/12 Days",
-  days: 12,
-  name: "SCANDINAVIAN SAGA",
-  price: "$3,499",
+export const scandinavianDelights: Package = {
+  id: "scandinavian-delights",
+  duration: "9 Nights/10 Days",
+  days: 10,
+  name: "SCANDINAVIAN DELIGHTS",
+  price: "$3,249",
   image: "/images/venice.png",
   images: ["/images/venice.png", "/images/paris.png", "/images/santorini.png"],
   route: [{ city: "Copenhagen", days: 3 }, { city: "Oslo", days: 2 }, { city: "Stockholm", days: 3 }, { city: "Helsinki", days: 2 }],

@@ -1,11 +1,11 @@
 import { Package } from "../../type/model";
 
-export const germanExplorer: Package = {
-  id: "german-explorer",
+export const jewelsOfEastEurope: Package = {
+  id: "jewels-of-east-europe",
   duration: "7 Nights/8 Days",
   days: 8,
-  name: "GERMAN EXPLORER",
-  price: "$2,399",
+  name: "JEWELS OF EAST EUROPE",
+  price: "$1,849",
   image: "/images/venice.png",
   images: ["/images/venice.png", "/images/paris.png", "/images/santorini.png"],
   route: [{ city: "Berlin", days: 3 }, { city: "Munich", days: 3 }, { city: "Black Forest", days: 2 }],

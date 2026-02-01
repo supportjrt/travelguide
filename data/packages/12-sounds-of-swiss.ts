@@ -1,11 +1,11 @@
 import { Package } from "../../type/model";
 
-export const spanishFiesta: Package = {
-  id: "spanish-fiesta",
-  duration: "9 Nights/10 Days",
-  days: 10,
-  name: "SPANISH FIESTA",
-  price: "$2,699",
+export const soundsOfSwiss: Package = {
+  id: "sounds-of-swiss",
+  duration: "7 Nights/8 Days",
+  days: 8,
+  name: "SOUNDS OF SWISS",
+  price: "$3,149",
   image: "/images/santorini.png",
   images: ["/images/santorini.png", "/images/venice.png", "/images/paris.png"],
   route: [{ city: "Madrid", days: 3 }, { city: "Seville", days: 2 }, { city: "Barcelona", days: 4 }],
