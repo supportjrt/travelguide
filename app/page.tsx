@@ -1,4 +1,5 @@
 import DestinationCard from "@/components/features/DestinationCard";
+import Image from "next/image";
 import { constructMetadata } from "@/components/seo/Meta";
 import { tours } from "@/data/tours";
 import { ScrollTop } from 'primereact/scrolltop';
@@ -16,10 +17,12 @@ export default function Home() {
       {/* Hero Section */}
       <div className="relative h-[60vh] min-h-[500px] w-full overflow-hidden">
         <div className="absolute inset-0">
-          <img 
+          <Image 
             src="/images/hero_bg.png" 
             alt="Tours Hero" 
-            className="w-full h-full object-cover"
+            fill
+            priority
+            className="object-cover"
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>

@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ItineraryProps } from "@/type/model";
+import ReactMarkdown from "react-markdown";
+
 
 export default function Itinerary({ items }: ItineraryProps) {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -87,10 +89,25 @@ export default function Itinerary({ items }: ItineraryProps) {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <div 
-                        className="text-gray-600 text-sm mb-4 prose prose-orange prose-sm max-w-none"
-                        dangerouslySetInnerHTML={{ __html: item.description }}
-                      />
+                      <div className="text-gray-600 text-sm mb-4 prose prose-orange prose-sm max-w-none">
+                        <ReactMarkdown
+                          components={{
+                            strong: ({ node, ...props }) => <strong className="text-orange-600" {...props} />,
+                            p: ({ node, ...props }) => <p className="mb-4 last:mb-0" {...props} />,
+                            img: ({ node, ...props }) => (
+                              <Image 
+                                src={String(props.src)} 
+                                alt={props.alt || "Tour image"} 
+                                width={800} 
+                                height={600} 
+                                className="rounded-xl w-full md:w-52 h-auto mb-4 md:mr-6 md:float-left object-cover" 
+                              />
+                            )
+                          }}
+                        >
+                          {item.description}
+                        </ReactMarkdown>
+                      </div>
                       {item.image && (
                         <div className="relative h-48 rounded-xl overflow-hidden mb-4">
                           <Image src={item.image} alt={item.title} fill className="object-cover" />
