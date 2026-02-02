@@ -8,7 +8,7 @@ export const glimpsesOfUK: Package = {
   price: "$2,149",
   image: "/images/paris.png",
   images: ["/images/paris.png", "/images/venice.png", "/images/santorini.png"],
-  highlights: [],
+  highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [],
   sightseeing: [],
   accommodation: [],

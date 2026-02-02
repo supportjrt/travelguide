@@ -8,7 +8,7 @@ export const fascinatingEurope: Package = {
   price: "$2,299",
   image: "/images/santorini.png",
   images: ["/images/santorini.png", "/images/venice.png", "/images/paris.png"],
-  highlights: ["Eiffel Tower", "Swiss Alps", "Gondola Ride", "Colosseum"],
+  highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [
     {
       day: 1,

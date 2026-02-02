@@ -8,7 +8,7 @@ export const scandinavianDelights: Package = {
   price: "$3,249",
   image: "/images/venice.png",
   images: ["/images/venice.png", "/images/paris.png", "/images/santorini.png"],
-  highlights: [],
+  highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [],
   sightseeing: [],
   accommodation: [],

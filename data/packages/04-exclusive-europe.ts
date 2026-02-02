@@ -8,7 +8,7 @@ export const exclusiveEurope: Package = {
   price: "$2,899",
   image: "/images/paris.png",
   images: ["/images/paris.png", "/images/venice.png", "/images/santorini.png"],
-  highlights: ["Eiffel Tower Visit", "Seine River Cruise", "Zurich Old Town"],
+  highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [
     {
       day: 1,

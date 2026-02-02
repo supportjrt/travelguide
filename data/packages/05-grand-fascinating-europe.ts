@@ -8,7 +8,7 @@ export const grandFascinatingEurope: Package = {
   price: "$2,999",
   image: "/images/venice.png",
   images: ["/images/venice.png", "/images/amalfi.png", "/images/paris.png"],
-  highlights: ["Eiffel Tower", "Swiss Alps", "Milan Duomo"],
+  highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [
     {
       day: 1,
