@@ -6,9 +6,9 @@ export const exclusiveEurope: Package = {
   days: 11,
   name: "EXCLUSIVE EUROPE",
   price: "$2,899",
-  image: "/images/paris.png",
-  images: ["/images/paris.png", "/images/venice.png", "/images/santorini.png"],
-  highlights: ["Eiffel Tower Visit", "Seine River Cruise", "Zurich Old Town"],
+  image: "/images/ExclusiveEurope/day9-FlorenceDuomo.jpg",
+  images: ["/images/ExclusiveEurope/day2-ArcDeTriomphe.jpg", "/images/ExclusiveEurope/day4-Jetd_Eau.jpg", "/images/ExclusiveEurope/day8-Venice.jpg"],
+  highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [
     {
       day: 1,
