@@ -3,6 +3,11 @@ import { useMutation } from "@tanstack/react-query";
 interface CreateLeadData {
   phone: string;
   packageName?: string;
+  utm_source?: string;
+  utm_medium?: string;
+  utm_campaign?: string;
+  utm_term?: string;
+  utm_content?: string;
 }
 
 interface UpdateLeadData {

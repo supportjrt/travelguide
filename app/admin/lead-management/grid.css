@@ -1,0 +1,88 @@
+/* Custom styles for AG Grid to match specific design requirements */
+
+.ag-theme-quartz {
+    /* Header Styling */
+    --ag-header-background-color: #fff7ed; /* Light orange background for header */
+    --ag-header-foreground-color: #9a3412; /* Darker orange/brown text for contrast */
+    --ag-header-height: 56px; /* More spacious header */
+    
+    /* Row Styling */
+    --ag-data-color: #6b7280; /* Gray-500 equivalent to match 'View and manage...' text */
+    --ag-row-hover-color: #fff7ed; /* Light orange hover */
+    --ag-odd-row-background-color: #f9fafb; /* Light gray for zebra striping */
+    --ag-row-border-style: solid;
+    --ag-row-border-width: 1px;
+    --ag-border-color: #fed7aa; /* Light orange border */
+    
+    /* Font */
+    --ag-font-size: 14px;
+    --ag-font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+    /* Cell Spacing */
+    --ag-grid-size: 8px; 
+    --ag-cell-horizontal-padding: 20px;
+}
+
+/* Force alternating row colors */
+.ag-theme-quartz .ag-row-odd {
+    background-color: #f9fafb !important; 
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.ag-theme-quartz .ag-row-even {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* Header Styling Enhancement */
+.ag-theme-quartz .ag-header {
+    border-bottom: 2px solid #fdba74; 
+}
+
+/* Vertical separators in header */
+.ag-theme-quartz .ag-header-cell {
+    border-right: 1px solid #fed7aa;
+}
+.ag-theme-quartz .ag-header-cell:last-child {
+    border-right: none;
+}
+
+/* Cell alignment and text display */
+.ag-theme-quartz .ag-cell {
+    display: block; 
+    line-height: var(--ag-row-height, 52px); 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    font-weight: 500; /* Slightly lighter weight perception, but clear */
+}
+
+/* Header Text */
+.ag-theme-quartz .ag-header-cell-label {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.025em;
+    color: #c2410c; 
+}
+
+/* Floating Filter Styling */
+.ag-theme-quartz .ag-floating-filter-input {
+    border: 1px solid #fdba74;
+    border-radius: 6px;
+    padding: 4px 8px;
+    background-color: white;
+    color: #4b5563;
+}
+.ag-theme-quartz .ag-floating-filter-button {
+    display: none; 
+}
+
+/* Pagination toolbar */
+.ag-theme-quartz .ag-paging-panel {
+    border-top: 2px solid #fed7aa;
+    background-color: #fff7ed;
+    color: #9a3412;
+}

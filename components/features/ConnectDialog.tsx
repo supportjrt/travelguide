@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useSendEmail } from "@/hooks/useSendEmail";
 import { useCreateLead, useUpdateLead } from "@/hooks/useLead";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useSearchParams } from "next/navigation";
 
 interface ConnectDialogProps {
   isOpen: boolean;
@@ -24,6 +25,8 @@ export default function ConnectDialog({ isOpen, onClose, packageName }: ConnectD
   const [step, setStep] = useState(1);
   const [error, setError] = useState("");
   const [leadId, setLeadId] = useState<string | null>(null);
+  
+  const searchParams = useSearchParams();
   
   const { mutateAsync: sendLeadData, isPending: isSendingEmail } = useSendEmail();
   const { mutateAsync: createLead, isPending: isCreatingLead } = useCreateLead();
@@ -66,8 +69,17 @@ export default function ConnectDialog({ isOpen, onClose, packageName }: ConnectD
       setError("");
       
       try {
-        // Step 1: Create Lead in DB
-        const result = await createLead({ phone: phoneValue, packageName });
+        // Step 1: Create Lead in DB with UTMs
+        const result = await createLead({ 
+          phone: phoneValue, 
+          packageName,
+          utm_source: searchParams.get("utm_source") || undefined,
+          utm_medium: searchParams.get("utm_medium") || undefined,
+          utm_campaign: searchParams.get("utm_campaign") || undefined,
+          utm_term: searchParams.get("utm_term") || undefined,
+          utm_content: searchParams.get("utm_content") || undefined,
+        });
+        
         if (result?.id) {
           setLeadId(result.id);
         }

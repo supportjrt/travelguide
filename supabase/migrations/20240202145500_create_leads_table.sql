@@ -10,6 +10,11 @@ create table public.leads (
   preferred_time text null,
   timezone text null,
   remarks text null,
+  utm_source text null,
+  utm_medium text null,
+  utm_campaign text null,
+  utm_term text null,
+  utm_content text null,
   constraint leads_pkey primary key (id)
 );
 

@@ -4,7 +4,7 @@ import { supabase } from '@/lib/supabase';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { phone, packageName } = body;
+    const { phone, packageName, utm_source, utm_medium, utm_campaign, utm_term, utm_content } = body;
 
     if (!phone) {
       return NextResponse.json({ error: 'Phone number is required' }, { status: 400 });
@@ -12,7 +12,15 @@ export async function POST(req: Request) {
 
     const { data, error } = await supabase
       .from('leads')
-      .insert([{ phone, package_name: packageName }])
+      .insert([{ 
+        phone, 
+        package_name: packageName,
+        utm_source,
+        utm_medium,
+        utm_campaign,
+        utm_term,
+        utm_content
+      }])
       .select('id')
       .single();
 
