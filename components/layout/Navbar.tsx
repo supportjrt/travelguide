@@ -10,6 +10,9 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
 
+  // Hide Navbar on admin pages
+  if (pathname?.startsWith('/admin')) return null;
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);

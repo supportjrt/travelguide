@@ -1,8 +1,8 @@
 "use client";
 
-import { useMemo, useState } from 'react';
+import { useState } from 'react';
 
-import { useLeads, Lead } from '@/hooks/useLeads';
+import { useLeads } from '@/hooks/useLeads';
 import { DashboardCard } from '@/components/admin/DashboardCard';
 import { RecentLeads } from '@/components/admin/RecentLeads';
 import { ConversionChart } from '@/components/admin/ConversionChart';

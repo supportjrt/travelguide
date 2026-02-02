@@ -3,6 +3,7 @@ import Image from "next/image";
 import { constructMetadata } from "@/components/seo/Meta";
 import { tours } from "@/data/tours";
 import { ScrollTop } from 'primereact/scrolltop';
+import { redirect } from "next/navigation";
 
 export const metadata = constructMetadata({
   title: "Home",
@@ -10,6 +11,8 @@ export const metadata = constructMetadata({
 });
 
 export default function Home() {
+  redirect("/europe-tour-packages-2026");
+  
   return (
     <div className="min-h-screen bg-white">
       <ScrollTop />

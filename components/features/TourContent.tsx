@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { ScrollTop } from 'primereact/scrolltop';
 import { Tooltip } from 'primereact/tooltip';
@@ -32,6 +32,16 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
   const [selectedPackage, setSelectedPackage] = useState<Package | null>(initialPackage);
   const [isConnectOpen, setIsConnectOpen] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  const tourHeaderRef = useRef<HTMLDivElement>(null);
+
+  const handlePackageChange = (pkg: Package) => {
+    setSelectedPackage(pkg);
+    // Smooth scroll to TourHeader with offset for sticky navbar
+    if (tourHeaderRef.current) {
+      tourHeaderRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
 
   // Derived data
   const currentImages = selectedPackage?.images || [tour.image];
@@ -106,7 +116,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
              packages={tour.packages!} 
              selectedPackage={selectedPackage} 
              tourId={tour.id}
-             onPackageChange={setSelectedPackage}
+             onPackageChange={handlePackageChange}
              layout="horizontal"
              className="!bg-transparent !shadow-none !border-none !p-0"
            />
@@ -132,7 +142,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
                           packages={tour.packages!} 
                           selectedPackage={selectedPackage} 
                           tourId={tour.id}
-                          onPackageChange={setSelectedPackage}
+                          onPackageChange={handlePackageChange}
                         />
                     </div>
                 )}
@@ -157,7 +167,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
             )}
 
             {/* Tour Header */}
-            <div className="relative group pt-2"> 
+            <div ref={tourHeaderRef} className="relative group pt-2 scroll-mt-32"> 
                 <TourHeader 
                     title={tour.title}
                     packageName={selectedPackage?.name}
@@ -212,7 +222,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
                    <h3 className="text-xl font-bold text-gray-900 mb-4">Trip Highlights</h3>
                    <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
                      
-                     {[...currentHighlights, "Professional English Speaking Guide", "All Entry Fees Included", "Comfortable AC Coach"].map((highlight, idx) => (
+                     {currentHighlights.map((highlight, idx) => (
                        <li key={idx} className="flex items-start gap-3">
                          <i className="pi pi-check-circle text-green-500 text-lg mt-0.5" />
                          <span className="text-gray-700 font-medium">{highlight}</span>
