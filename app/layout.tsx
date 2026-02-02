@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Outfit, Aleo } from "next/font/google";
+import { Outfit } from "next/font/google"; // Removed Aleo from google fonts
+import localFont from "next/font/local";
 import "./globals.css";
 
 // PrimeReact Styles
@@ -17,8 +18,39 @@ const outfit = Outfit({
   variable: "--font-outfit",
 });
 
-const aleo = Aleo({
-  subsets: ["latin"],
+const aleo = localFont({
+  src: [
+    {
+      path: "./fonts/Aleo-Light.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Aleo-LightItalic.otf",
+      weight: "300",
+      style: "italic",
+    },
+    {
+      path: "./fonts/Aleo-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Aleo-Italic.otf",
+      weight: "400",
+      style: "italic",
+    },
+    {
+      path: "./fonts/Aleo-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./fonts/Aleo-BoldItalic.otf",
+      weight: "700",
+      style: "italic",
+    },
+  ],
   variable: "--font-aleo",
 });
 

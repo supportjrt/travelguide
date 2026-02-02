@@ -9,32 +9,35 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
   const [activeTab, setActiveTab] = useState("Highlights");
 
   const tabs = [
-    { id: "Highlights", icon: null },
-    { id: "Itinerary", icon: null },
+    { id: "Highlights", icon: "pi pi-star" },
+    { id: "Itinerary", icon: "pi pi-calendar" },
     { id: "Sightseeing", icon: "pi pi-compass" },
     { id: "Accommodation", icon: "pi pi-home" },
-    { id: "Meals", icon: "pi pi-apple" },
+    { id: "Meals", icon: "pi pi-check-circle" },
     { id: "Exclusions", icon: "pi pi-times-circle" },
   ];
 
   return (
     <div>
       {/* Tabs Header */}
-      <div className="sticky top-[85px] z-40 bg-white flex flex-wrap md:flex-nowrap gap-2 md:gap-3 mb-6 md:mb-8 border-b border-gray-100 pb-2 md:overflow-x-auto w-full md:snap-x max-w-full pt-4 px-1">
-        {tabs.map((tab) => (
-          <button
-            key={tab.id}
-            onClick={() => setActiveTab(tab.id)}
-            className={`px-5 py-2.5 rounded-lg font-bold text-sm transition-all flex items-center gap-2 flex-shrink-0 snap-start border ${
-              activeTab === tab.id
-                ? "bg-orange-500 text-white border-orange-500 shadow-md transform scale-105"
-                : "bg-white border-gray-200 text-gray-600 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200"
-            }`}
-          >
-            {tab.icon && <i className={tab.icon} />}
-            {tab.id}
-          </button>
-        ))}
+      <div className="sticky top-[85px] z-40 bg-white border-b border-gray-100 mb-6 md:mb-8 pt-4 pb-2 shadow-sm">
+        <div className="flex flex-nowrap gap-2 md:gap-3 overflow-x-auto w-full snap-x hide-scrollbar scroll-smooth px-1">
+          {tabs.map((tab) => (
+            <button
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id)}
+              className={`px-4 md:px-5 py-2.5 rounded-lg font-bold text-sm transition-all flex items-center gap-2 flex-shrink-0 snap-start border whitespace-nowrap ${
+                activeTab === tab.id
+                  ? "bg-orange-500 text-white border-orange-500 shadow-md transform scale-105"
+                  : "bg-white border-gray-200 text-gray-600 hover:bg-orange-50 hover:text-orange-600 hover:border-orange-200"
+              }`}
+              title={tab.id}
+            >
+              {tab.icon && <i className={`${tab.icon} text-lg md:text-base`} />}
+              <span className="hidden md:inline">{tab.id}</span>
+            </button>
+          ))}
+        </div>
       </div>
 
       {/* Tab Content */}
@@ -53,7 +56,7 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
                 {highlights.map((highlight, index) => (
                   <li key={index} className="flex items-start gap-3 p-3 border border-gray-50 rounded-lg hover:bg-orange-50/50 transition-colors">
                     <i className="pi pi-star-fill text-orange-500 mt-1 shrink-0" />
-                    <span className="text-gray-700 font-medium leading-relaxed break-words min-w-0 flex-1">{highlight}</span>
+                    <span className="text-gray-700 font-normal leading-relaxed break-words min-w-0 flex-1">{highlight}</span>
                   </li>
                 ))}
               </ul>
@@ -78,7 +81,7 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
             {additionalDelights && additionalDelights.length > 0 && (
               <div className="mt-8 pt-8 border-t border-gray-100">
                 <div className="bg-gradient-to-br from-rose-50 to-pink-50 rounded-2xl p-6 border border-rose-100">
-                  <h3 className="text-xl font-bold font-serif mb-6 flex items-center gap-2 text-rose-900">
+                  <h3 className="text-xl font-bold mb-6 flex items-center gap-2 text-rose-900">
                     <i className="pi pi-heart-fill text-rose-500" />
                     Additional Delights
                   </h3>
@@ -188,7 +191,7 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
                     {meals.inclusions.map((item, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <i className="pi pi-check text-green-500 mt-1 shrink-0" />
-                        <span className="text-gray-700 font-medium">{item}</span>
+                        <span className="text-gray-700 font-normal">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -198,7 +201,7 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
                 {meals.note && (
                   <div className="bg-teal-50 border border-teal-100 rounded-xl p-4 flex gap-3 items-start">
                     <i className="pi pi-info-circle text-teal-600 mt-1 shrink-0" />
-                    <p className="text-teal-800 text-sm font-medium italic leading-relaxed">
+                    <p className="text-teal-800 text-sm font-normal italic leading-relaxed">
                       {meals.note}
                     </p>
                   </div>
@@ -237,7 +240,7 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
                       {exclusions.map((item, index) => (
                         <li key={index} className="flex items-start gap-3">
                             <i className="pi pi-times text-red-500 mt-1 shrink-0" />
-                            <span className="text-gray-700 font-medium leading-relaxed">{item.description}</span>
+                            <span className="text-gray-700 font-normal leading-relaxed">{item.description}</span>
                         </li>
                       ))}
                    </ul>

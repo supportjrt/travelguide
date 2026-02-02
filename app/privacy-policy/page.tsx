@@ -91,7 +91,7 @@ export default function PrivacyPolicyPage() {
         </aside>
 
         {/* Content Area */}
-        <div className="lg:w-3/4 max-w-4xl prose prose-slate prose-headings:font-serif prose-headings:text-brand-purple prose-a:text-brand-orange prose-strong:text-brand-purple">
+        <div className="lg:w-3/4 max-w-4xl prose prose-slate prose-headings: prose-headings:text-brand-purple prose-a:text-brand-orange prose-strong:text-brand-purple">
           <p className="text-sm text-text-muted">Updated March 7, 2026</p>
           <p className="text-text-secondary">
             This Privacy Policy describes Our policies and procedures on the collection, use, and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.

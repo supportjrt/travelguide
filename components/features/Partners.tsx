@@ -17,7 +17,7 @@ const Partners = () => {
     <section className="bg-white py-16 border-t border-gray-100">
       <div className="container mx-auto px-6">
         <div className="text-center mb-10">
-          <h2 className="text-2xl font-bold font-serif text-gray-900 mb-2">Our Partners & Accreditations</h2>
+          <h2 className="text-2xl font-bold  text-gray-900 mb-2">Our Partners & Accreditations</h2>
         </div>
         
         <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12 lg:gap-16">

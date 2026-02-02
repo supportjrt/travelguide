@@ -181,7 +181,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
             {/* Itinerary Tabs */}
             <section id="full-itinerary" className="bg-white p-4 md:p-8 rounded-2xl shadow-sm border border-gray-100">
                <div className="flex justify-between items-center mb-6">
-                 <h2 className="text-2xl font-bold font-serif flex items-center gap-2">
+                 <h2 className="text-2xl font-bold  flex items-center gap-2">
                     <i className="pi pi-calendar text-orange-600" />
                     Detailed Itinerary
                  </h2>
@@ -205,14 +205,14 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
              {/* Route Timeline */}
              {normalizedRoute.length > 0 && (
               <section className="bg-white p-4 md:p-6 rounded-2xl shadow-sm border border-gray-100">
-                <h2 className="text-2xl font-bold font-serif mb-4">Destination Routes</h2>
+                <h2 className="text-2xl font-bold  mb-4">Destination Routes</h2>
                 <RouteTimeline route={normalizedRoute} />
               </section>
             )}
 
             {/* About */}
             <section className="bg-white p-4 md:p-8 rounded-2xl shadow-sm border border-gray-100">
-              <h2 className="text-2xl font-bold font-serif mb-4">About the Experience</h2>
+              <h2 className="text-2xl font-bold  mb-4">About the Experience</h2>
               <p className="text-gray-600 leading-relaxed mb-6">
                 {tour.description}
               </p>
@@ -225,7 +225,7 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
                      {currentHighlights.map((highlight, idx) => (
                        <li key={idx} className="flex items-start gap-3">
                          <i className="pi pi-check-circle text-green-500 text-lg mt-0.5" />
-                         <span className="text-gray-700 font-medium">{highlight}</span>
+                         <span className="text-gray-700 font-normal">{highlight}</span>
                        </li>
                      ))}
                    </ul>

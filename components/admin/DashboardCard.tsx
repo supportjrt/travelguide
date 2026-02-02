@@ -39,7 +39,7 @@ export function DashboardCard({ title, children, action }: DashboardCardProps) {
         <div className="flex justify-between items-center p-5 border-b border-gray-100 shrink-0">
           <div className="flex items-center gap-2">
             {/* Optional Icon could go here */}
-            <h3 className="font-bold text-lg text-gray-800 font-serif">{title}</h3>
+            <h3 className="font-bold text-lg text-gray-800 ">{title}</h3>
           </div>
           
           <div className="flex items-center gap-3">

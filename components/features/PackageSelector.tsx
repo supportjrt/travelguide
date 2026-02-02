@@ -85,7 +85,7 @@ export default function PackageSelector({
   return (
     <div className={`bg-white rounded-2xl p-6 shadow-sm border border-gray-100 ${className}`}>
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-xl font-bold font-serif text-gray-900">Choose Your Journey</h2>
+        <h2 className="text-xl font-bold  text-gray-900">Choose Your Journey</h2>
         <button 
           onClick={() => setIsSearchOpen(!isSearchOpen)}
           className="text-orange-600 text-sm font-medium flex items-center gap-2 hover:text-orange-700 transition-colors"

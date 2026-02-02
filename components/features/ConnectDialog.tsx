@@ -170,7 +170,7 @@ export default function ConnectDialog({ isOpen, onClose, packageName }: ConnectD
                   <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                     <i className="pi pi-check text-3xl text-green-600" />
                   </div>
-                  <h2 className="text-2xl font-bold font-serif text-gray-900 mb-2">Thank you!</h2>
+                  <h2 className="text-2xl font-bold  text-gray-900 mb-2">Thank you!</h2>
                   <p className="text-gray-500 mb-8">Your request is received. An expert will connect with you shortly.</p>
                   <button 
                     onClick={handleClose}
@@ -181,7 +181,7 @@ export default function ConnectDialog({ isOpen, onClose, packageName }: ConnectD
                 </div>
               ) : (
                 <>
-                  <h2 className={`text-2xl font-bold font-serif mb-2 ${step === 1 ? 'text-gray-900' : 'text-green-600'}`}>
+                  <h2 className={`text-2xl font-bold  mb-2 ${step === 1 ? 'text-gray-900' : 'text-green-600'}`}>
                     {step === 1 ? "Connect with a Travel Expert" : "Thank you. Please help with couple of more details."}
                   </h2>
                   <p className="text-gray-500 text-sm mb-8">

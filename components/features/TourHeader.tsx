@@ -21,7 +21,7 @@ export default function TourHeader({ title, packageName, duration, price, onEnqu
             </div>
           )}
           
-          <h1 className="text-3xl md:text-4xl font-black font-serif bg-gradient-to-r from-orange-800 via-orange-600 to-red-600 bg-clip-text text-transparent leading-snug tracking-tight drop-shadow-sm break-words whitespace-normal w-full pb-1">
+          <h1 className="text-3xl md:text-4xl font-black bg-gradient-to-r from-orange-800 via-orange-600 to-red-600 bg-clip-text text-transparent leading-snug tracking-tight drop-shadow-sm break-words whitespace-normal w-full pb-1">
             {packageName || title}
           </h1>
         </div>

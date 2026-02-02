@@ -30,7 +30,7 @@ export default function AdminLayout({
       {/* Hero Banner */}
       <div className="bg-gray-800 text-white py-20 px-6">
         <div className="max-w-7xl mx-auto">
-          <h1 className="text-3xl font-bold font-serif mb-2">Welcome back, Admin</h1>
+          <h1 className="text-3xl font-bold  mb-2">Welcome back, Admin</h1>
           <p className="text-gray-300">Manage your leads, tours, and bookings efficiently.</p>
         </div>
       </div>

@@ -27,7 +27,7 @@ const Hero = () => {
           <span className="text-white/90 uppercase tracking-[0.2em] text-sm font-medium mb-4 block">
             A Season of Extraordinary
           </span>
-          <h1 className="text-5xl md:text-7xl font-bold text-white font-serif mb-6 leading-tight">
+          <h1 className="text-5xl md:text-7xl font-bold text-white  mb-6 leading-tight">
             Luxury Travel <br /> Reimagined
           </h1>
           <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto mb-12 font-light">

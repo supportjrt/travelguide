@@ -38,7 +38,7 @@ const DestinationCard = ({
 
         <div className="absolute bottom-0 left-0 w-full p-6 text-white transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300">
           <p className="text-sm font-medium text-blue-300 mb-1 uppercase tracking-wider">{location}</p>
-          <h3 className="text-2xl font-bold font-serif mb-2">{title}</h3>
+          <h3 className="text-2xl font-bold  mb-2">{title}</h3>
           <div className="flex items-center justify-between mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
             <div>
               <span className="text-xs text-gray-300 block">Starting from</span>

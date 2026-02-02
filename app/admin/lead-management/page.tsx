@@ -19,7 +19,7 @@ export default function LeadManagementPage() {
     <div className="space-y-8">
       <div className="flex justify-between items-center">
         <div>
-          <h2 className="text-2xl font-bold font-serif text-gray-800">Lead Management</h2>
+          <h2 className="text-2xl font-bold  text-gray-800">Lead Management</h2>
           <p className="text-gray-500 text-sm mt-1">View and manage customer inquiries</p>
         </div>
         <div className="bg-orange-50 text-orange-700 px-4 py-2 rounded-full text-sm font-medium border border-orange-200">
