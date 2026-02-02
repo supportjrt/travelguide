@@ -6,8 +6,8 @@ export const beautyOfEurope: Package = {
   days: 9,
   name: "BEAUTY OF EUROPE",
   price: "$2,799",
-  image: "/images/amalfi.png",
-  images: ["/images/amalfi.png", "/images/venice.png", "/images/santorini.png"],
+  image: "/images/BeautyofEurope/day6-HeidelbergAlstadt.jpg",
+  images: ["/images/BeautyofEurope/day8-CableCar.jpg", "/images/BeautyofEurope/day5-KeukenhofGardens.jpg", "/images/BeautyofEurope/day4-MiniEurope.jpg"],
   highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [
     {

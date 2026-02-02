@@ -6,8 +6,8 @@ export const grandWondersOfEurope2026: Package = {
   days: 16,
   name: "GRAND WONDERS OF EUROPE",
   price: "$4,299",
-  image: "/images/paris.png",
-  images: ["/images/paris.png", "/images/venice.png", "/images/santorini.png"],
+  image: "/images/GrandWondersofEurope/London-hero-image.png",
+  images: ["/images/GrandWondersofEurope/day4-VersaillesPalace.jpg", "/images/GrandWondersofEurope/day12-Swarovski.jpg", "/images/GrandWondersofEurope/day15-VaticanMuseum.jpg"],
   route: [
     { city: "London", days: 3 },
     { city: "Paris", days: 3 },

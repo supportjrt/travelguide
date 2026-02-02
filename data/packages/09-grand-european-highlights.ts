@@ -6,8 +6,8 @@ export const grandEuropeanHighlights: Package = {
   days: 12,
   name: "GRAND EUROPEAN HIGHLIGHTS",
   price: "$2,849",
-  image: "/images/venice.png",
-  images: ["/images/venice.png", "/images/paris.png", "/images/santorini.png"],
+  image: "/images/GrandEuropeanHighlights/day11-TreviFountain.jpg",
+  images: ["/images/GrandEuropeanHighlights/day7-RhineFalls.jpg", "/images/GrandEuropeanHighlights/day10-Mark_sSquare.jpg", "/images/GrandEuropeanHighlights/day3-OperaGarnier.jpg"],
   highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [
     {

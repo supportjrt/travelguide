@@ -6,8 +6,8 @@ export const grandExclusiveEurope: Package = {
   days: 13,
   name: "GRAND EXCLUSIVE EUROPE",
   price: "$3,649",
-  image: "/images/santorini.png",
-  images: ["/images/santorini.png", "/images/venice.png", "/images/paris.png"],
+  image: "/images/GrandExclusiveEurope/hero-image.jpg",
+  images: ["/images/GrandExclusiveEurope/day2-TowerBridge.jpg", "/images/GrandExclusiveEurope/day4-ArcDeTriomphe.jpg", "/images/GrandExclusiveEurope/day11-FlorenceDuomo.jpg"],
   highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [
     {

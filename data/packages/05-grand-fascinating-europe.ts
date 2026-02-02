@@ -6,8 +6,8 @@ export const grandFascinatingEurope: Package = {
   days: 10,
   name: "GRAND FASCINATING EUROPE",
   price: "$2,999",
-  image: "/images/venice.png",
-  images: ["/images/venice.png", "/images/amalfi.png", "/images/paris.png"],
+  image: "/images/GrandFascinatingEurope/day2-TowerBridge.jpg",
+  images: ["/images/GrandFascinatingEurope/day3-EurostarTrain.jpg", "/images/GrandFascinatingEurope/day5-Disneyland.jpg", "/images/GrandFascinatingEurope/day7-CogwheelTrain.jpg"],
   highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [
     {

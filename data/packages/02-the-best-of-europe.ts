@@ -6,8 +6,8 @@ export const theBestOfEurope: Package = {
   days: 13,
   name: "THE BEST OF EUROPE",
   price: "$3,299",
-  image: "/images/venice.png",
-  images: ["/images/venice.png", "/images/amalfi.png", "/images/paris.png"],
+  image: "/images/TheBestofEurope/hero-image.jpg",
+  images: ["/images/TheBestofEurope/day1-palace.jpg", "/images/TheBestofEurope/day2-EiffelTowel.jpg", "/images/TheBestofEurope/day11-BasilicaDiSantaCroce.jpg"],
   route: [
     { city: "Paris", days: 3 },
     { city: "Netherlands", days: 1 },

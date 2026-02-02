@@ -6,8 +6,8 @@ export const europeanGrandeur: Package = {
   days: 13,
   name: "EUROPEAN GRANDEUR",
   price: "$3,899",
-  image: "/images/paris.png",
-  images: ["/images/paris.png", "/images/venice.png", "/images/santorini.png"],
+  image: "/images/EuropeanGrandeur/day5-Amsterdam.jpg",
+  images: ["/images/EuropeanGrandeur/day12-Lindt.jpg", "/images/EuropeanGrandeur/day3-LordsCricketStadium.jpg", "/images/EuropeanGrandeur/day4-Giethoorn.jpg"],
 
   highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [

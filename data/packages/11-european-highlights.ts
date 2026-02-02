@@ -6,7 +6,7 @@ export const europeanHighlights: Package = {
   days: 10,
   name: "EUROPEAN HIGHLIGHTS",
   price: "$2,099",
-  image: "/images/EuropeanHighlights/hero-image.jpg",
+  image: "/images/EuropeanHighlights/day2-PalaceofVersailles.jpg",
   images: ["/images/EuropeanHighlights/day2-EiffelTower.jpg", "/images/EuropeanHighlights/day6-AletschGlacier.jpg", "/images/EuropeanHighlights/day8-Mark_sSquare.jpg"],
   highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [

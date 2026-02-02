@@ -6,8 +6,8 @@ export const miniGrandeur: Package = {
   days: 10,
   name: "MINI GRANDEUR",
   price: "$3,099",
-  image: "/images/venice.png",
-  images: ["/images/venice.png", "/images/amalfi.png", "/images/paris.png"],
+  image: "/images/MiniEuropeanGrandeur/day5-Disneyland.jpg",
+  images: ["/images/MiniEuropeanGrandeur/day4-PalaceofVersailles.jpg", "/images/MiniEuropeanGrandeur/day3-GrandPlace.jpg", "/images/MiniEuropeanGrandeur/hero-image.jpg"],
   highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [
     {
