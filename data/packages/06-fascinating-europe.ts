@@ -6,9 +6,9 @@ export const fascinatingEurope: Package = {
   days: 8,
   name: "FASCINATING EUROPE",
   price: "$2,299",
-  image: "/images/santorini.png",
-  images: ["/images/santorini.png", "/images/venice.png", "/images/paris.png"],
-  highlights: ["Eiffel Tower", "Swiss Alps", "Gondola Ride", "Colosseum"],
+  image: "/images/FascinatingEurope/day2-ArcDeTriomphe.jpg",
+  images: ["/images/FascinatingEurope/day6-MtTitlis.jpg", "/images/FascinatingEurope/day5-CogwheelTrain.jpg", "/images/FascinatingEurope/day7-Lindt.jpg"],
+  highlights: ["Daily Continental buffet breakfast", "Zero out-of-pocket expense", "Jain, Veg, and Non-veg cuisine", "Comfortable AC Coach", "Professional English Speaking Guide", "Guaranteed Departure"],
   itinerary: [
     {
       day: 1,
