@@ -82,7 +82,11 @@ export default function TourContent({ tour, initialPackageId }: TourContentProps
   return (
     <div className="min-h-screen bg-gray-50 pb-32 lg:pb-16 w-full">
       <ScrollTop />
-      <ConnectDialog isOpen={isConnectOpen} onClose={() => setIsConnectOpen(false)} />
+      <ConnectDialog 
+        isOpen={isConnectOpen} 
+        onClose={() => setIsConnectOpen(false)} 
+        packageName={selectedPackage?.name}
+      />
       
       {/* Hero Carousel */}
       <HeroCarousel 

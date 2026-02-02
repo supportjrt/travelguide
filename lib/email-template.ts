@@ -1,5 +1,5 @@
 
-export const generateEmailTemplate = (data: { phone: string; name?: string; time?: string; timezone?: string }) => {
+export const generateEmailTemplate = (data: { phone: string; email?: string; name?: string; time?: string; timezone?: string; packageName?: string }) => {
   return `
     <!DOCTYPE html>
     <html>
@@ -30,6 +30,20 @@ export const generateEmailTemplate = (data: { phone: string; name?: string; time
             <div class="value">${data.phone}</div>
           </div>
 
+          ${data.email ? `
+          <div class="field">
+            <div class="label">Email</div>
+            <div class="value">${data.email}</div>
+          </div>
+          ` : ''}
+
+          ${data.packageName ? `
+          <div class="field">
+            <div class="label">Interested Package</div>
+            <div class="value">${data.packageName}</div>
+          </div>
+          ` : ''}
+
           ${data.name ? `
           <div class="field">
             <div class="label">Name</div>
@@ -44,7 +58,7 @@ export const generateEmailTemplate = (data: { phone: string; name?: string; time
           </div>
           ` : ''}
 
-          <p>Please contact this potential client as soon as possible.</p>
+          <p>Please contact this potential client as soon as possible via Phone or Email.</p>
         </div>
         <div class="footer">
           <p>Travel Guide Automated Notification</p>

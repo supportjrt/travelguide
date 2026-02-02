@@ -6,7 +6,7 @@ import { generateEmailTemplate } from '@/lib/email-template';
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { phone, name, time, timezone } = body;
+    const { phone, name, email, time, timezone, packageName } = body;
 
     if (!phone) {
       return NextResponse.json({ error: 'Phone number is required' }, { status: 400 });
@@ -26,7 +26,7 @@ export async function POST(req: Request) {
       from: process.env.SMTP_FROM,
       to: process.env.ADMIN_EMAIL,
       subject: `New Travel Inquiry from ${name || phone}`,
-      html: generateEmailTemplate({ phone, name, time, timezone }),
+      html: generateEmailTemplate({ phone, name, email, time, timezone, packageName }),
     };
 
     await transporter.sendMail(mailOptions);

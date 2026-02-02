@@ -2,20 +2,44 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useSendEmail } from "@/hooks/useSendEmail";
+import { useCreateLead, useUpdateLead } from "@/hooks/useLead";
+import { useForm, SubmitHandler } from "react-hook-form";
 
 interface ConnectDialogProps {
   isOpen: boolean;
   onClose: () => void;
+  packageName?: string;
 }
 
-export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
+interface Inputs {
+  phone: string;
+  name: string;
+  email: string;
+  time: string;
+  timezone: string;
+}
+
+export default function ConnectDialog({ isOpen, onClose, packageName }: ConnectDialogProps) {
   const [step, setStep] = useState(1);
-  const [phone, setPhone] = useState("");
-  const [name, setName] = useState("");
-  const [time, setTime] = useState("Morning");
-  const [timezone, setTimezone] = useState("EST");
   const [error, setError] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [leadId, setLeadId] = useState<string | null>(null);
+  
+  const { mutateAsync: sendLeadData, isPending: isSendingEmail } = useSendEmail();
+  const { mutateAsync: createLead, isPending: isCreatingLead } = useCreateLead();
+  const { mutateAsync: updateLead, isPending: isUpdatingLead } = useUpdateLead();
+  
+  const { register, handleSubmit, formState: { errors }, watch, setValue, reset, trigger } = useForm<Inputs>({
+    defaultValues: {
+      phone: "",
+      name: "",
+      email: "",
+      time: "Morning",
+      timezone: "EST"
+    }
+  });
+
+  const phoneValue = watch("phone");
 
   const formatPhoneNumber = (value: string) => {
     const phoneNumber = value.replace(/\D/g, "");
@@ -28,48 +52,65 @@ export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
     return `(${phoneNumber.slice(0, 3)}) ${phoneNumber.slice(3, 6)}-${phoneNumber.slice(6, 10)}`;
   };
 
-  const sendLeadData = async (data: Record<string, any>) => {
-    const response = await fetch('/api/send-email', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data),
-    });
-    if (!response.ok) throw new Error('Failed to send request');
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const formatted = formatPhoneNumber(e.target.value);
+    setValue("phone", formatted);
+    if (error) setError("");
   };
 
   const handleNextStep = async () => {
-    const rawPhone = phone.replace(/\D/g, "");
-    if (/^\d{10}$/.test(rawPhone)) {
+    const valid = await trigger("phone"); // Trigger validation for phone
+    const rawPhone = phoneValue.replace(/\D/g, "");
+    
+    if (valid && /^\d{10}$/.test(rawPhone)) {
       setError("");
-      setIsSubmitting(true);
       
       try {
-        await sendLeadData({ phone, step: '1' });
+        // Step 1: Create Lead in DB
+        const result = await createLead({ phone: phoneValue, packageName });
+        if (result?.id) {
+          setLeadId(result.id);
+        }
+
+        // Send checking email (optional/legacy behavior)
+        await sendLeadData({ phone: phoneValue, email: "", step: '1', packageName });
+        
         setStep(2);
       } catch (err) {
-        console.error("Failed to send step 1 email", err);
-        setStep(2);
-      } finally {
-        setIsSubmitting(false);
+        console.error("Failed to process step 1", err);
+        // We might want to block progress if DB fails, but for now let's proceed to allow email at least?
+        // Or if email fails but DB works? 
+        // Let's assume critical failure logs error but attempts to move forward if UI flow permits,
+        // though `createLead` failure means we have no ID for step 2.
+        // If createLead fails, we won't have an ID.
+        setStep(2); 
       }
     } else {
       setError("Please enter a valid 10-digit phone number");
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
     try {
-      await sendLeadData({ phone, name, time, timezone, step: '2' });
-      console.log("Connect requested for:", { phone, name, time, timezone });
+      // Step 2: Update Lead in DB if we have an ID
+      if (leadId) {
+        await updateLead({ 
+          id: leadId, 
+          name: data.name, 
+          email: data.email, 
+          time: data.time, 
+          timezone: data.timezone 
+        });
+      }
+
+      // Send detailed email
+      await sendLeadData({ ...data, step: '2', packageName });
+      
+      console.log("Connect requested for:", data);
       setStep(3);
     } catch (err) {
       console.error(err);
       setError("Something went wrong. Please try again.");
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -77,10 +118,8 @@ export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
     onClose();
     setTimeout(() => {
       setStep(1);
-      setPhone("");
-      setName("");
-      setTime("Morning");
-      setTimezone("EST");
+      reset();
+      setLeadId(null);
       setError("");
     }, 500);
   };
@@ -137,36 +176,34 @@ export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
                     {step === 1 ? "Enter Your Phone Number to Continue" : ""}
                   </p>
 
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 text-left">
                     {/* Step 1: Phone */}
                     <div className={`space-y-4 ${step === 1 ? 'block' : 'hidden'}`}>
-                      <div className="flex gap-3">
-                        <div className="w-24 px-3 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-700 font-medium flex items-center justify-between cursor-pointer">
-                          <span>+1</span>
-                          <i className="pi pi-chevron-down text-xs" />
+                      <div className="space-y-1">
+                        <label className="text-sm font-medium text-gray-700 ml-1">Phone Number</label>
+                        <div className="flex gap-3">
+                          <div className="w-24 px-3 py-3 rounded-xl border border-gray-200 bg-gray-50 text-gray-700 font-medium flex items-center justify-between cursor-pointer">
+                            <span>+1</span>
+                            <i className="pi pi-chevron-down text-xs" />
+                          </div>
+                          <input 
+                            type="tel" 
+                            placeholder="(555) 555-5555" 
+                            {...register("phone", { required: true })}
+                            onChange={handlePhoneChange}
+                            className={`flex-1 px-4 py-3 rounded-xl border ${error ? 'border-red-500 focus:ring-red-500' : 'border-gray-200 focus:ring-orange-500'} focus:outline-none focus:ring-2 focus:border-transparent`}
+                          />
                         </div>
-                        <input 
-                          type="tel" 
-                          placeholder="(555) 555-5555" 
-                          value={phone}
-                          onChange={(e) => {
-                            const formatted = formatPhoneNumber(e.target.value);
-                            setPhone(formatted);
-                            if (error) setError("");
-                          }}
-                          required={step === 1}
-                          className={`flex-1 px-4 py-3 rounded-xl border ${error ? 'border-red-500 focus:ring-red-500' : 'border-gray-200 focus:ring-orange-500'} focus:outline-none focus:ring-2 focus:border-transparent`}
-                        />
                       </div>
-                      {error && <p className="text-red-500 text-xs text-left pl-1">{error}</p>}
+                      {error && <p className="text-red-500 text-xs pl-1">{error}</p>}
                       
                       <button 
                         type="button"
                         onClick={handleNextStep}
-                        disabled={isSubmitting}
-                        className={`w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-200 transition-all transform hover:-translate-y-1 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                        disabled={isCreatingLead || isSendingEmail}
+                        className={`w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-200 transition-all transform hover:-translate-y-1 ${(isCreatingLead || isSendingEmail) ? 'opacity-70 cursor-not-allowed' : ''}`}
                       >
-                        {isSubmitting ? "Connecting..." : "Connect with Expert"}
+                        {(isCreatingLead || isSendingEmail) ? "Connecting..." : "Connect with Expert"}
                       </button>
                     </div>
 
@@ -179,41 +216,57 @@ export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
                           exit={{ opacity: 0, height: 0 }}
                           className="space-y-4"
                         >
-                          <input 
-                            type="text" 
-                            placeholder="Your Name*" 
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            required={step === 2}
-                            className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
-                          />
+                          <div className="space-y-1">
+                            <label className="text-sm font-medium text-gray-700 ml-1">Name</label>
+                            <input 
+                              type="text" 
+                              placeholder="Your Name*" 
+                              {...register("name", { required: true })}
+                              className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                            />
+                          </div>
+
+                          <div className="space-y-1">
+                             <label className="text-sm font-medium text-gray-700 ml-1">Email</label>
+                             <input 
+                               type="email"
+                               placeholder="Your Email*"
+                               {...register("email", { required: true })}
+                               className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent"
+                             />
+                          </div>
+                          
                           <div className="flex gap-3">
-                            <select 
-                              value={timezone}
-                              onChange={(e) => setTimezone(e.target.value)}
-                              className="w-1/3 px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white"
-                            >
-                              {["EST", "CST", "MST", "PST", "AKST", "HST"].map(tz => (
-                                <option key={tz} value={tz}>{tz}</option>
-                              ))}
-                            </select>
-                            <select 
-                              value={time}
-                              onChange={(e) => setTime(e.target.value)}
-                              className="w-2/3 px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white"
-                            >
-                              <option value="Morning">Morning (9 AM - 12 PM)</option>
-                              <option value="Afternoon">Afternoon (12 PM - 4 PM)</option>
-                              <option value="Evening">Evening (4 PM - 8 PM)</option>
-                            </select>
+                             <div className="w-1/3 space-y-1">
+                                <label className="text-sm font-medium text-gray-700 ml-1">Timezone</label>
+                                <select 
+                                  {...register("timezone")}
+                                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white"
+                                >
+                                  {["EST", "CST", "MST", "PST", "AKST", "HST"].map(tz => (
+                                    <option key={tz} value={tz}>{tz}</option>
+                                  ))}
+                                </select>
+                             </div>
+                             <div className="w-2/3 space-y-1">
+                                <label className="text-sm font-medium text-gray-700 ml-1">Preferred Time</label>
+                                <select 
+                                  {...register("time")}
+                                  className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent bg-white"
+                                >
+                                  <option value="Morning">Morning (9 AM - 12 PM)</option>
+                                  <option value="Afternoon">Afternoon (12 PM - 4 PM)</option>
+                                  <option value="Evening">Evening (4 PM - 8 PM)</option>
+                                </select>
+                             </div>
                           </div>
                           
                             <button 
                               type="submit"
-                              disabled={isSubmitting}
-                              className={`w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-200 transition-all transform hover:-translate-y-1 ${isSubmitting ? 'opacity-70 cursor-not-allowed' : ''}`}
+                              disabled={isUpdatingLead || isSendingEmail}
+                              className={`w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-4 rounded-xl shadow-lg shadow-orange-200 transition-all transform hover:-translate-y-1 ${(isUpdatingLead || isSendingEmail) ? 'opacity-70 cursor-not-allowed' : ''}`}
                             >
-                              {isSubmitting ? "Sending..." : "Request Callback"}
+                              {(isUpdatingLead || isSendingEmail) ? "Sending..." : "Request Callback"}
                             </button>
                         </motion.div>
                       )}
@@ -231,16 +284,7 @@ export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
                 <div className="h-[1px] bg-gray-200 w-12" />
               </div>
               
-              <div className="flex justify-between items-center px-4">
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center text-green-600">
-                    <i className="pi pi-tripadvisor" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-xs font-bold text-gray-900">4.5/5</p>
-                    <p className="text-[10px] text-gray-500 uppercase">Trip Advisor</p>
-                  </div>
-                </div>
+              <div className="flex justify-center items-center px-4">
                 <div className="flex items-center gap-2">
                   <div className="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600">
                     <i className="pi pi-google" />
@@ -248,15 +292,6 @@ export default function ConnectDialog({ isOpen, onClose }: ConnectDialogProps) {
                   <div className="text-left">
                     <p className="text-xs font-bold text-gray-900">4.4/5</p>
                     <p className="text-[10px] text-gray-500 uppercase">Google</p>
-                  </div>
-                </div>
-                <div className="flex items-center gap-2">
-                  <div className="w-8 h-8 rounded-full bg-black flex items-center justify-center text-white">
-                    <i className="pi pi-star-fill text-xs" />
-                  </div>
-                  <div className="text-left">
-                    <p className="text-xs font-bold text-gray-900">4.3/5</p>
-                    <p className="text-[10px] text-gray-500 uppercase">Reviews.io</p>
                   </div>
                 </div>
               </div>
