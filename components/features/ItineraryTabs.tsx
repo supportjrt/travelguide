@@ -13,15 +13,15 @@ export default function ItineraryTabs({ itinerary, sightseeing, accommodation, m
     { id: "Itinerary", icon: "pi pi-calendar" },
     { id: "Sightseeing", icon: "pi pi-compass" },
     { id: "Accommodation", icon: "pi pi-home" },
-    { id: "Meals", icon: "pi pi-check-circle" },
+    { id: "Meals", icon: "pi pi-chart-pie" },
     { id: "Exclusions", icon: "pi pi-times-circle" },
   ];
 
   return (
     <div>
       {/* Tabs Header */}
-      <div className="sticky top-[85px] z-40 bg-white border-b border-gray-100 mb-6 md:mb-8 pt-4 pb-2 shadow-sm">
-        <div className="flex flex-nowrap gap-2 md:gap-3 overflow-x-auto w-full snap-x hide-scrollbar scroll-smooth px-1">
+      <div className="sticky top-[85px] z-40 bg-white mb-6 md:mb-8 pt-4 pb-2">
+        <div className="flex flex-nowrap gap-2 md:gap-3 overflow-x-auto overflow-y-hidden w-full snap-x hide-scrollbar scroll-smooth px-1 py-1">
           {tabs.map((tab) => (
             <button
               key={tab.id}
